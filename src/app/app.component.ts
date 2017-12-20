@@ -8,13 +8,6 @@ import {BaseComponent} from "./base/base.component";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent extends BaseComponent implements OnInit{
-  commonRouters: any;//页面路由管理
   ngOnInit() {
-    this.commonRouters = new CommonRouters("app");
-    this.commonRouters.loginRouter = this.commonRouters.rootRouter + "/login";
-    /*this.routerLogin();*/
-  }
-  routerLogin(){
-    this.router.navigate([this.commonRouters.loginRouter]);
   }
 }

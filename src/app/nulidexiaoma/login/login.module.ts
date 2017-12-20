@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import {LoginComponent} from "./login.component";
 import {routing} from "./login.component.routing";
 import {MainComponent} from "./component/main.component";
-import {BaseService} from "../../base/base.service";
+import {PageNotFoundComponent} from "./component/pagenotfound/pagenotfound.component";
+import {CommonService} from "../../base/common.service";
 
 
 @NgModule({
@@ -13,8 +14,9 @@ import {BaseService} from "../../base/base.service";
   ],
   declarations: [
     LoginComponent,
+    PageNotFoundComponent,
     MainComponent
   ],
-  providers: [BaseService],
+  providers: [CommonService],
 })
 export class LoginModule { }
