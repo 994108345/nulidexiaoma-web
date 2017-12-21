@@ -1,5 +1,5 @@
-import {Component, OnInit} from "@angular/core";
-import {BaseComponent} from "../../../../base/base.component";
+import {Component, Injector, OnInit} from "@angular/core";
+import {AbstractComponent} from "../../../../base/abstract.component";
 /**
  * Created by wenzailong on 2017/12/20.
  */
@@ -7,8 +7,11 @@ import {BaseComponent} from "../../../../base/base.component";
   templateUrl: './pagenotfound.component.html',
   styleUrls: ['./pagenotfound.component.css']
 })
-export class PageNotFoundComponent  extends BaseComponent implements  OnInit{
+export class PageNotFoundComponent extends AbstractComponent implements OnInit{
   title = 'app';
+  constructor(public injector:Injector){
+    super(injector);
+  }
   ngOnInit(): void {
   }
 }

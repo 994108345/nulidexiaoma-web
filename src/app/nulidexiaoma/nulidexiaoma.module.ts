@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {LoginModule} from "./login/login.module";
 
@@ -7,7 +6,6 @@ import {LoginModule} from "./login/login.module";
   declarations: [
   ],
   imports: [
-    BrowserModule,
     LoginModule
   ],
   providers: [],

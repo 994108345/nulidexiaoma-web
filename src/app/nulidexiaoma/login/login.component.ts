@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {BaseComponent} from "../../base/base.component";
+import {AbstractComponent} from "../../base/abstract.component";
 
 @Component({
   template: '<router-outlet></router-outlet>'
 })
-export class LoginComponent extends BaseComponent implements  OnInit{
+export class LoginComponent {
   title = 'app';
   ngOnInit() {
 
