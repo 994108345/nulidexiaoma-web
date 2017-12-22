@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import {LoginModule} from "./login/login.module";
+import {MainMenuModule} from "./mainmenu/mainmenu.module";
 
 
 @NgModule({
   declarations: [
   ],
   imports: [
-    LoginModule
+    LoginModule,
+    MainMenuModule
   ],
   providers: [],
   bootstrap: []

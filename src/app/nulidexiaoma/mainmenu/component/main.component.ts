@@ -14,9 +14,8 @@ export class MainComponent extends AbstractComponent implements OnInit{
   ngOnInit(): void {
     //页面路由
     //this.commonRouters = commonRouters;
-    /*t跳转菜单页面*/
-    this.commonRouters = new CommonRouters("mainMenu");
-    this.commonRouters.mainMenuRouter = this.commonRouters.rootRouter;
+    this.commonRouters = new CommonRouters("subjectmanage");
+    this.commonRouters.editRouter = this.commonRouters.rootRouter + "/add";
 
    //跳转链接
     this.commonUrls = {
@@ -31,7 +30,6 @@ export class MainComponent extends AbstractComponent implements OnInit{
         this.status = JSON.parse(rtnData['status']);
         if(this.status && this.status==10000){
           this.msgs = this.wzlAlert.success("登录成功");
-          this.router.navigate([this.commonRouters.mainMenuRouter]);
         }else{
           this.msgs = this.wzlAlert.error("登录失败，"+rtnData['message']);
         }

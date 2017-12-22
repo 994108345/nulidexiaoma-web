@@ -1,18 +1,23 @@
 
-<div style="text-align:center">
-  <h3 class="first">Basic</h3>
-  <input id="input" type="text" size="30" pInputText >
-  <span id="text">{{text}}</span>
-
-  <h3>Float Label</h3>
+<div style="">
+  <h3 class="first">LOGIN</h3>
+  <!--c提示的错误信息-->
+  <p-messages [(value)]="msgs"></p-messages>
+  <div class="input">
   <span class="ui-float-label">
-    <input id="float-input" type="text" size="30" pInputText>
-    <label for="float-input">Username</label>
-</span>
+    <input id="float-input" type="text" size="30" [(ngModel)]="order.userName"  pInputText>
+    <label for="float-input" >UserName</label>
+  </span>
+  </div>
+  <div class="input">
+  <span class="ui-float-label">
+    <input id="float-input-password" type="password" size="30" [(ngModel)]="order.passWord"  pInputText>
+    <label for="float-input" >PassWord</label>
+  </span>
+  </div>
+  <div class="input">
+    <button pButton type="button" (click)="login()" icon="fa-check" label="Login"></button>
+  </div>
 
-  <h3>Disabled</h3>
-  <input id="disabled-input" type="text" size="30" pInputText [disabled]="disabled" />
-
-  <button id="disabled-btn" type="button" (click)="toggleDisabled()" pButton label="Toggle"></button>
 </div>
 

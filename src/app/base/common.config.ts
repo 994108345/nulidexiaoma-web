@@ -18,7 +18,7 @@ export class CommonServiceUrls {
 // 页面内路由地址管理
 export class CommonRouters {
     constructor(public bizModule: string) {
-        let baseUrl = "/wms" + "/" + bizModule;
+        let baseUrl = "/nulidexiaioma" + "/" + bizModule;
         this.path = bizModule;
         this.rootRouter = baseUrl;
         this.addRouter = baseUrl + "/add";
