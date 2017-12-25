@@ -2,22 +2,22 @@
  * Created by wenzailong on 2017/12/20.
  */
 import { Routes, RouterModule } from '@angular/router';
-import {AppComponent} from "./app.component";
-import {LoginComponent} from "./base/login/login.component";
-import {PageNotFoundComponent} from "./base/login/component/pagenotfound/pagenotfound.component";
-import {MainMenuComponent} from "./base/mainmenu/mainmenu.component";
-import {UserManageModule} from "./nulidexiaoma/usermanage/usermanage.module";
-import {LeftComponent} from "./base/mainmenu/component/left/left.component";
-import {UserManageComponent} from "./nulidexiaoma/usermanage/usermanage.component";
-import {IndexComponent} from "./base/mainmenu/component/index/index.component";
+import {AppComponent} from './app.component';
+import {LoginComponent} from './base/login/login.component';
+import {PageNotFoundComponent} from './base/login/component/pagenotfound/pagenotfound.component';
+import {MainMenuComponent} from './base/mainmenu/mainmenu.component';
+import {UserManageModule} from './nulidexiaoma/usermanage/usermanage.module';
+import {LeftComponent} from './base/mainmenu/component/left/left.component';
+import {UserManageComponent} from './nulidexiaoma/usermanage/usermanage.component';
+import {IndexComponent} from './base/mainmenu/component/index/index.component';
 
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path:'',
+    path: '',
     component: AppComponent,
-    children:[
+    children: [
       { path: 'userManage', component: UserManageComponent },
     ]
   },

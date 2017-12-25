@@ -13,3 +13,9 @@ div{
   margin:1px;
   border:solid 1px #00A77B;
 }
+.all-div{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
