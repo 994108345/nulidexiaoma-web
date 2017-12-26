@@ -3,7 +3,6 @@ import {AbstractComponent} from "../../../../base/common/abstract.component";
 import {BizRoot, CommonRouters} from "../../../../base/service/common/common.config";
 
 @Component({
-  selector:'index-main',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })

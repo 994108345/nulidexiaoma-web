@@ -8,20 +8,17 @@ import {ButtonModule, GrowlModule, InputTextModule, MenuItem, MessagesModule, Pa
 import {HttpModule} from "@angular/http";
 import {WzlAlertService} from "../../base/service/wzlalert/wzlalert.service";
 import {MessageService} from "primeng/components/common/messageservice";
-import {routing} from "./mainmenu.component.routing";
+import {routings} from "./mainmenu.component.routing";
 import {MainComponent} from "./component/main.component";
 import {MainMenuComponent} from "./mainmenu.component";
 import {LeftComponent} from "./component/left/left.component";
 import {TopComponent} from "./component/top/top.component";
 import {IndexComponent} from "./component/index/index.component";
-import {UserManageModule} from "../../nulidexiaoma/usermanage/usermanage.module";
 import {NulidexiaomaModule} from "../../nulidexiaoma/nulidexiaoma.module";
 
 
 @NgModule({
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     InputTextModule,
     MessagesModule,
     GrowlModule,
@@ -29,8 +26,9 @@ import {NulidexiaomaModule} from "../../nulidexiaoma/nulidexiaoma.module";
     ButtonModule,
     HttpModule,
     PanelMenuModule,
+
     NulidexiaomaModule,
-    routing
+    routings
   ],
   declarations: [
     MainMenuComponent,

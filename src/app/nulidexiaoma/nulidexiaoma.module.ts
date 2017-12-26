@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {UserManageModule} from "./usermanage/usermanage.module";
+import {UserManageModule} from "./module/usermanage/usermanage.module";
 
 
 @NgModule({

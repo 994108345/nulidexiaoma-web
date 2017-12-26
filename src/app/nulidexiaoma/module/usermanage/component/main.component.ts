@@ -1,6 +1,6 @@
 import {Component, Injector, OnInit} from '@angular/core';
-import {AbstractComponent} from "../../../base/common/abstract.component";
-import {BizRoot, CommonRouters} from "../../../base/service/common/common.config";
+import {AbstractComponent} from "../../../../base/common/abstract.component";
+import {BizRoot, CommonRouters} from "../../../../base/service/common/common.config";
 
 @Component({
   template:'<router-outlet></router-outlet>',

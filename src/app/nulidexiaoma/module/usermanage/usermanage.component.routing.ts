@@ -9,8 +9,8 @@ import {UserManageComponent} from "./usermanage.component";
 const routes: Routes = [
 
   {
-    path: 'mainMenu/'+userManagePath,
-    component: UserManageComponent,
+    path: userManagePath,
+    component: MainComponent,
     children: [
       { path: '', component: MainComponent },
     ]

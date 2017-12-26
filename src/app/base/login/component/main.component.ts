@@ -3,6 +3,7 @@ import {AbstractComponent} from "../../common/abstract.component";
 import {BizRoot, CommonRouters} from "../../service/common/common.config";
 
 @Component({
+  selector:'app-login',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
@@ -31,6 +32,8 @@ export class MainComponent extends AbstractComponent implements OnInit{
         this.status = JSON.parse(rtnData['status']);
         if(this.status && this.status==10000){
           this.msgs = this.wzlAlert.success("登录成功");
+          /*缓存数据*/
+          localStorage.setItem('user',condition);
           this.router.navigate(["mainMenu"]);
         }else{
           this.msgs = this.wzlAlert.error("登录失败，"+rtnData['message']);

@@ -1,5 +1,8 @@
-/*所有按钮的样式*/
+/*所有输入框的样式*/
 .input{
   margin-top: 20px;
+}
+body{
+  border:1px solid red;
 }
 

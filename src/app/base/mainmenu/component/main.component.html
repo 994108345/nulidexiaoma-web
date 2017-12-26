@@ -4,10 +4,10 @@
   </div>
   <div style="height: 90%;">
     <div class="left" style="height: 90%;width: auto;float: left;">
-      <left-main></left-main>
+      <p-panelMenu [model]="menuItems" [style]="{'width':'300px'}"></p-panelMenu>
     </div>
     <div class="index" style="height: 90%;width: 77%;height:600px;">
-      <index-main></index-main>
+      <router-outlet name="pop"></router-outlet>
     </div>
   </div>
 </div>

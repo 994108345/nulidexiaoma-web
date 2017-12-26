@@ -99,7 +99,8 @@ export class LeftComponent extends AbstractComponent implements OnInit{
   /*登录*/
   login(){
     if (this.commonUrls.loginUrl) {
-      this.router.navigate(["userManage"]);
+      /*this.router.navigate(["mainMenu/userManage"]);*/
+      this.router.navigate(['mainMenu/userManage']);
     } else {
       this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
     }

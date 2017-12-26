@@ -8,16 +8,14 @@ import {ButtonModule, GrowlModule, InputTextModule, MessagesModule} from 'primen
 import {HttpModule} from '@angular/http';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {Router, RouterModule} from '@angular/router';
-import {CommonService} from '../../base/service/common/common.service';
-import {WzlAlertService} from '../../base/service/wzlalert/wzlalert.service';
 import {routing} from './usermanage.component.routing';
 import {UserManageComponent} from './usermanage.component';
+import {CommonService} from "../../../base/service/common/common.service";
+import {WzlAlertService} from "../../../base/service/wzlalert/wzlalert.service";
 
 
 @NgModule({
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     InputTextModule,
     MessagesModule,
     GrowlModule,
@@ -28,7 +26,8 @@ import {UserManageComponent} from './usermanage.component';
     routing
   ],
   declarations: [
-    MainComponent, UserManageComponent,
+    MainComponent,
+    UserManageComponent,
   ],
   providers: [CommonService, WzlAlertService, MessageService],
 })
