@@ -33,7 +33,8 @@ export class MainComponent extends AbstractComponent implements OnInit{
         if(this.status && this.status==10000){
           this.msgs = this.wzlAlert.success("登录成功");
           /*缓存数据*/
-          localStorage.setItem('user',rtnData['data']);
+          localStorage.setItem('user',this.toJsonStr(rtnData['data']));
+          localStorage.setItem("1","123");
           console.log("login");
           this.router.navigate(["/app/index"]);
         }else{

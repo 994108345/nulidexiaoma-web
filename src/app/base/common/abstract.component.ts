@@ -18,6 +18,17 @@ export class AbstractComponent {
 
   constructor(public injector: Injector) {
   }
+  /*将对象转化成json字符串对象*/
+  toJsonStr(obj:any){
+    let jsonStr = JSON.stringify(obj);
+    return jsonStr;
+  }
+  /*将json字符串转成json对象*/
+  tOJsonObj(json:any){
+    let jsonObj = JSON.parse(json);
+    return jsonObj;
+  }
+
 
   /** ----------从DI构造器中手动获取服务-----------*/
   get commonService(): CommonService {

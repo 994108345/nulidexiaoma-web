@@ -13,7 +13,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
     super(injector);
   }
   ngOnInit(): void {
-    this.order = localStorage.getItem('user');
+    this.order = this.tOJsonObj(localStorage.getItem('user'));
     console.log(1);
     console.log("username:"+this.order.userName);
     //页面路由
