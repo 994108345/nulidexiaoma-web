@@ -1,13 +1,15 @@
 <div>
   <div class="top" style="height: 50px;">
-    <top-main></top-main>
+    <p class="top-div-font">.class</p>
   </div>
   <div style="height: 90%;">
     <div class="left" style="height: 90%;width: auto;float: left;">
       <p-panelMenu [model]="menuItems" [style]="{'width':'300px'}"></p-panelMenu>
     </div>
     <div class="index" style="height: 90%;width: 77%;height:600px;">
-      <router-outlet name="pop"></router-outlet>
+      <main-top></main-top><br/>
+      <router-outlet></router-outlet>
+      <main-bootom></main-bootom>
     </div>
   </div>
 </div>

@@ -8,6 +8,12 @@
 .left{
   height: 70%;width: auto;float: left;
 }
+/*主页面的文字样式*/
+.top-div-font{
+  font-size: 1em;
+  color: white;
+  text-align: center;
+}
 .top{
   background: url(../../../../assets/picture/2.png) no-repeat;
   background-size: 100%;

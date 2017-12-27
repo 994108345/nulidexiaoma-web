@@ -4,17 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {RemoveNullStringPipe} from './base/pipeline/RemoveNullString.pipe';
 import {RouterModule} from '@angular/router';
-import {NulidexiaomaModule} from './nulidexiaoma/nulidexiaoma.module';
 import {ButtonModule, GrowlModule, InputTextModule, MessagesModule, PanelMenuModule} from 'primeng/primeng';
-import {routing} from './app.routing';
+import {AppRoutingModule} from './app.routing';
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {LoginModule} from "./base/login/login.module";
-import {MainMenuModule} from "./base/mainmenu/mainmenu.module";
+import {PageNotFoundComponent} from "./base/login/component/pagenotfound/pagenotfound.component";
+import {SelectivePreloadingStrategy} from "./selective-preloading-strategy";
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
     RemoveNullStringPipe
   ],
   imports: [
@@ -29,15 +29,13 @@ import {MainMenuModule} from "./base/mainmenu/mainmenu.module";
     RouterModule,
     PanelMenuModule,
     MessagesModule,
-    InputTextModule,
     GrowlModule,
 
-    MainMenuModule,
-    LoginModule,
-    NulidexiaomaModule,
-    routing
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    SelectivePreloadingStrategy,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

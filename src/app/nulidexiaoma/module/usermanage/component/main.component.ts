@@ -8,11 +8,14 @@ import {BizRoot, CommonRouters} from "../../../../base/service/common/common.con
   styleUrls: ['./main.component.css']
 })
 export class MainComponent extends AbstractComponent implements OnInit{
-
+    order:any = {};
   constructor(public injector:Injector){
     super(injector);
   }
   ngOnInit(): void {
+    this.order = localStorage.getItem('user');
+    console.log(1);
+    console.log("username:"+this.order.userName);
     //页面路由
     //this.commonRouters = commonRouters;
     /*t跳转菜单页面*/
@@ -23,22 +26,5 @@ export class MainComponent extends AbstractComponent implements OnInit{
     this.commonUrls = {
       loginUrl :BizRoot+ "/Login/login",
     };
-  }
-  /*登录*/
-  login(){
-    if (this.commonUrls.loginUrl) {
-      let condition = this.order;
-      this.commonService.doHttpPost(this.commonUrls.loginUrl, condition).then(rtnData => {
-        this.status = JSON.parse(rtnData['status']);
-        if(this.status && this.status==10000){
-          this.msgs = this.wzlAlert.success("登录成功");
-          this.router.navigate(["mainMenu"]);
-        }else{
-          this.msgs = this.wzlAlert.error("登录失败，"+rtnData['message']);
-        }
-      })
-    } else {
-      this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
-    }
   }
 }

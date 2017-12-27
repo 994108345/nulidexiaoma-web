@@ -5,15 +5,13 @@ import { RouterModule, Routes } from "@angular/router";
 import {LoginComponent} from "./login.component";
 import {MainComponent} from "./component/main.component";
 import {loginPath} from "./login.component.config";
+import {NgModule} from "@angular/core";
 
-const routes: Routes = [
-/*  {
-    path: 'nulidexiaoma-web',
-    component: MainMenuComponent,
-    children:[
-      {path:'mainMenu', component: MainMenuComponent}
-    ]
-  },*/
+const loginRoutes: Routes = [
+  {
+    path: '',
+    component: MainComponent
+  },
   {
     path: loginPath,
     component: LoginComponent,
@@ -24,4 +22,12 @@ const routes: Routes = [
 
 ];
 
-export const routing = RouterModule.forChild(routes);
+@NgModule({
+  imports: [
+    RouterModule.forChild(loginRoutes)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class LoginRoutingModule { }

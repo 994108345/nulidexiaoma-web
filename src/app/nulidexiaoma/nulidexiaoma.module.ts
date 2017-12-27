@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {UserManageModule} from "./module/usermanage/usermanage.module";
+import {IndexModule} from "./module/index/index.module";
 
 
 @NgModule({
@@ -7,6 +8,7 @@ import {UserManageModule} from "./module/usermanage/usermanage.module";
   ],
   imports: [
     UserManageModule,
+    IndexModule,
   ],
   providers: [],
   bootstrap: []

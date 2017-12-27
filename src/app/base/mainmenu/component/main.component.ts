@@ -36,7 +36,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
             {label: 'Other'},
           ]
         },
-          {label: '用户信息',command: (event) => {this.redictRouter();}},
+          {label: '用户信息',command: (event) => {this.redictRouter('usermanage');}},
           {label: 'Quit'}
         ]
       },
@@ -95,14 +95,11 @@ export class MainComponent extends AbstractComponent implements OnInit{
         ]
       }
     ];
-   /* this.router.navigate(['mainMenu/index']);*/
-    this.router.navigate([{ outlets: { pop: 'mainMenu/index' }}]);
   }
-  redictRouter(){
-    if (this.commonUrls.loginUrl) {
-      /*this.router.navigate(["mainMenu/userManage"]);*/
-      /*this.router.navigate(['mainMenu/userManage']);*/
-      this.router.navigate([{ outlets: { pop: 'login' }}]);
+  redictRouter(router:any){
+    let routerStr = 'app/'+router;
+    if (router) {
+      this.router.navigate([routerStr]);
     } else {
       this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
     }

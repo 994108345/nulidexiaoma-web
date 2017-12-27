@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import {LoginComponent} from "./login.component";
-import {routing} from "./login.component.routing";
+import {LoginRoutingModule} from "./login.component.routing";
 import {MainComponent} from "./component/main.component";
-import {PageNotFoundComponent} from "./component/pagenotfound/pagenotfound.component";
 import {CommonService} from "../service/common/common.service";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 
 import {ButtonModule, GrowlModule, InputTextModule, MessagesModule} from "primeng/primeng";
@@ -17,8 +14,6 @@ import {Router, RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     InputTextModule,
     MessagesModule,
     GrowlModule,
@@ -26,11 +21,10 @@ import {Router, RouterModule} from "@angular/router";
     ButtonModule,
     HttpModule,
     RouterModule,
-    routing
+    LoginRoutingModule
   ],
   declarations: [
     LoginComponent,
-    PageNotFoundComponent,
     MainComponent
   ],
   providers: [CommonService,WzlAlertService,MessageService],

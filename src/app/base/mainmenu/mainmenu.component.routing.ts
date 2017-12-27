@@ -3,20 +3,17 @@
  */
 import { RouterModule, Routes } from "@angular/router";
 import {MainMenuComponent} from "./mainmenu.component";
-import {mainMenuPath} from "./mainmenu.component.config";
 import {MainComponent} from "./component/main.component";
-import {IndexComponent} from "./component/index/index.component";
-import {PageNotFoundComponent} from "../login/component/pagenotfound/pagenotfound.component";
 
-const routes: Routes = [
+const mainMenuRouters: Routes = [
   {
-    path: mainMenuPath,
-    component: MainMenuComponent,
+    path: '',
+    component: MainComponent,
     children: [
-      { path: '', component: MainComponent },
-      { path:'index',component:IndexComponent,outlet:'pop',},
+      { path:'index', loadChildren: 'app/nulidexiaoma/module/index/index.module#IndexModule' },
+      { path:'usermanage', loadChildren: 'app/nulidexiaoma/module/usermanage/usermanage.module#UserManageModule' },
     ]
   },
 ];
 
-export const routings = RouterModule.forChild(routes);
+export const routings = RouterModule.forChild(mainMenuRouters);

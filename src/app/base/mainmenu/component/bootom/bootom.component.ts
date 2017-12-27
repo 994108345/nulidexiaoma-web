@@ -4,11 +4,11 @@ import {AbstractComponent} from "../../../common/abstract.component";
 import {CommonRouters} from "../../../service/common/common.config";
 
 @Component({
-  selector:'main-top',
-  templateUrl: './top.component.html',
-  styleUrls: ['./top.component.css']
+  selector:'main-bootom',
+  templateUrl: './bootom.component.html',
+  styleUrls: ['./bootom.component.css']
 })
-export class TopComponent extends AbstractComponent implements OnInit{
+export class BootomComponent extends AbstractComponent implements OnInit{
   menuItems: MenuItem[];
 
   constructor(public injector:Injector){
@@ -16,5 +16,4 @@ export class TopComponent extends AbstractComponent implements OnInit{
   }
   ngOnInit(): void {
   }
-
 }

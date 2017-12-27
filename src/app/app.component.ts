@@ -3,7 +3,9 @@ import {AbstractComponent} from "./base/common/abstract.component";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template:`
+    <router-outlet></router-outlet>
+  `,
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent extends AbstractComponent implements OnInit{
