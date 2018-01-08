@@ -3,8 +3,8 @@
  */
 import { Routes, RouterModule } from '@angular/router';
 import {PageNotFoundComponent} from './base/login/component/pagenotfound/pagenotfound.component';
-import {SelectivePreloadingStrategy} from "./selective-preloading-strategy";
 import {NgModule} from "@angular/core";
+import {AppGuardService} from "./base/guard/app.gurad.service";
 
 
 export const routes: Routes = [
@@ -15,6 +15,7 @@ export const routes: Routes = [
   },
   {
     path: 'app',
+    canActivate: [AppGuardService],
     loadChildren: 'app/base/mainmenu/mainmenu.module#MainMenuModule'
   },
   {
@@ -28,7 +29,7 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes,{preloadingStrategy: SelectivePreloadingStrategy,useHash:true})
+    RouterModule.forRoot(routes,{useHash:true})
   ],
   exports: [
     RouterModule

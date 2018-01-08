@@ -3,13 +3,13 @@
  */
 import { RouterModule, Routes } from "@angular/router";
 import {MainComponent} from "./component/main.component";
-import {UserManageComponent} from "./usermanage.component";
+import {RoleManageComponent} from "./rolemanage.component";
 
-const routes: Routes = [
+const roleRoutes: Routes = [
 
   {
     path: '',
-    component: UserManageComponent,
+    component: RoleManageComponent,
     children: [
       { path: '', component: MainComponent },
     ]
@@ -17,4 +17,4 @@ const routes: Routes = [
 
 ];
 
-export const routing = RouterModule.forChild(routes);
+export const routing = RouterModule.forChild(roleRoutes);

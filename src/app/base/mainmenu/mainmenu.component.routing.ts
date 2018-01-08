@@ -12,6 +12,7 @@ const mainMenuRouters: Routes = [
     children: [
       { path:'index', loadChildren: 'app/nulidexiaoma/module/index/index.module#IndexModule' },
       { path:'usermanage', loadChildren: 'app/nulidexiaoma/module/usermanage/usermanage.module#UserManageModule' },
+      { path:'rolemanage', loadChildren: 'app/nulidexiaoma/module/rolemanage/rolemanage.module#RoleManageModule' },
     ]
   },
 ];

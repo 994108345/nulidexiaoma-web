@@ -23,7 +23,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
 
    //跳转链接
     this.commonUrls = {
-      loginUrl :BizRoot+ "/Login/login",
+      getRolePageBeanUrl :BizRoot+ "/Role/getRolePageBean",
     };
   }
 }

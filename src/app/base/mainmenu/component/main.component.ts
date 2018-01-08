@@ -36,8 +36,25 @@ export class MainComponent extends AbstractComponent implements OnInit{
             {label: 'Other'},
           ]
         },
-          {label: '用户信息',command: (event) => {this.redictRouter('usermanage');}},
+          {label: '用户信息',routerLink:'usermanage'},
           {label: 'Quit'}
+        ]
+      },
+      {
+        label: '权限管理',
+        icon: 'fa-edit',
+        items: [
+          {label: '权限分配', icon: 'fa-mail-forward'},
+          {label: '角色管理', icon: 'fa-mail-forward',routerLink:'rolemanage'},
+          {label: '菜单管理', icon: 'fa-mail-reply'}
+        ]
+      },
+      {
+        label: '编辑器',
+        icon: 'fa-edit',
+        items: [
+          {label: '添加学习资料', icon: 'fa-mail-forward'},
+          {label: 'Redo', icon: 'fa-mail-reply'}
         ]
       },
       {

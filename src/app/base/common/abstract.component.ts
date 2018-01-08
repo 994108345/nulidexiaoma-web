@@ -5,6 +5,7 @@ import {CommonService} from "../service/common/common.service";
 import {WzlAlertService} from "../service/wzlalert/wzlalert.service";
 import {Http} from "@angular/http";
 import {Router} from "@angular/router";
+import {AppGuardService} from "../guard/app.gurad.service";
 /**
  * Created by wenzailong on 2017/12/21.
  */
@@ -18,15 +19,27 @@ export class AbstractComponent {
 
   constructor(public injector: Injector) {
   }
+
   /*将对象转化成json字符串对象*/
   toJsonStr(obj:any){
     let jsonStr = JSON.stringify(obj);
     return jsonStr;
   }
-  /*将json字符串转成json对象*/
-  tOJsonObj(json:any){
+
+  /*将json字符串转成json对象
+  * 注意！转化成是一个json对象数组
+  * */
+  tOJsonObjs(json:any){
     let jsonObj = JSON.parse(json);
     return jsonObj;
+  }
+
+  /*将json字符串转成json对象
+   * 注意！转化成是一个json对象数组,这里取第一个
+   * */
+  tOJsonObj(json:any){
+    let jsonObj = JSON.parse(json);
+    return jsonObj[0];
   }
 
 
@@ -41,5 +54,9 @@ export class AbstractComponent {
   /*路由服务*/
   get router(): Router {
     return this.injector.get(Router);
+  }
+  /*路由守卫服务*/
+  get appGuard(): AppGuardService {
+    return this.injector.get(AppGuardService);
   }
 }

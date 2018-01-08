@@ -10,7 +10,7 @@ import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PageNotFoundComponent} from "./base/login/component/pagenotfound/pagenotfound.component";
-import {SelectivePreloadingStrategy} from "./selective-preloading-strategy";
+import {AppGuardService} from "./base/guard/app.gurad.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,11 +30,10 @@ import {SelectivePreloadingStrategy} from "./selective-preloading-strategy";
     PanelMenuModule,
     MessagesModule,
     GrowlModule,
-
     AppRoutingModule,
   ],
   providers: [
-    SelectivePreloadingStrategy,
+    AppGuardService
   ],
   bootstrap: [AppComponent]
 })
