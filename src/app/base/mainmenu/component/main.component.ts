@@ -46,7 +46,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
         items: [
           {label: '权限分配', icon: 'fa-mail-forward'},
           {label: '角色管理', icon: 'fa-mail-forward',routerLink:'rolemanage'},
-          {label: '菜单管理', icon: 'fa-mail-reply'}
+          {label: '菜单管理', icon: 'fa-mail-reply',routerLink:'menumanage'}
         ]
       },
       {

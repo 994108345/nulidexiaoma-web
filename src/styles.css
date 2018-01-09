@@ -5,4 +5,13 @@
 body{
   border:1px solid red;
 }
+.tools-bar{
+  width: 98%;
+  height: auto;
+  padding: 4px;
+  margin: 4px;
+  background-color: #186BA0;
+  border-radius:5px;/*圆角*/
+  text-align:right;
+}
 

@@ -21,7 +21,6 @@ import {AppGuardService} from "./base/guard/app.gurad.service";
     BrowserModule,
     BrowserAnimationsModule,
     InputTextModule,
-    MessagesModule,
     GrowlModule,
     FormsModule,
     ButtonModule,

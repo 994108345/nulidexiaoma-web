@@ -1,6 +1,7 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {AbstractComponent} from "../../common/abstract.component";
 import {BizRoot, CommonRouters} from "../../service/common/common.config";
+import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} from '@angular/http';
 
 @Component({
   selector:'app-login',
@@ -27,6 +28,8 @@ export class MainComponent extends AbstractComponent implements OnInit{
   /*登录*/
   login(){
     if (this.commonUrls.loginUrl) {
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
       let condition = this.order;
       this.commonService.doHttpPost(this.commonUrls.loginUrl, condition).then(rtnData => {
         this.status = JSON.parse(rtnData['status']);

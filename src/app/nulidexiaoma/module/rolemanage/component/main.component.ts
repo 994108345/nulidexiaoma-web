@@ -1,13 +1,19 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {AbstractComponent} from "../../../../base/common/abstract.component";
 import {BizRoot, CommonRouters} from "../../../../base/service/common/common.config";
+import {roleCols_config} from "./main.component.config";
 
 @Component({
-  template:'<router-outlet></router-outlet>',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent extends AbstractComponent implements OnInit{
+  /*列名*/
+  roleCols:any[] ;
+  /*表数据*/
+  roleDate:any[];
+
+  @ViewChild('table') table: any;
   constructor(public injector:Injector){
     super(injector);
   }
@@ -23,7 +29,9 @@ export class MainComponent extends AbstractComponent implements OnInit{
 
    //跳转链接
     this.commonUrls = {
-      getRolePageBeanUrl :BizRoot+ "/Role/getRolePageBean",
+      queryUrl :BizRoot+ "/Role/getRolePageBean",
     };
+    /*列名*/
+    this.roleCols = roleCols_config;
   }
 }

@@ -1,5 +1,8 @@
-<h3>角色管理</h3>
 <div>
+  <h3>菜单管理</h3>
+  <div class="tools-bar">
+    <button type="button" pButton (click)="routerAdd()" label="新增" class="ui-button-warning" ></button>
+  </div>
   <p-dataTable #table [value]="orders" [paginator]="true" [rows]="10" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [pageLinks]="9"
                selectionMode="single" [(selection)]="order" (onRowDblclick)="refresh()"
   >
@@ -8,7 +11,7 @@
         <button type="button" pButton (click)="refresh()" label="延期" class="ui-button-warning"></button>
       </ng-template>
     </p-column>
-    <p-column   *ngFor="let col of roleCols" [field]="col.field" [header]="col.header">
+    <p-column   *ngFor="let col of menuCols" [field]="col.field" [header]="col.header">
     </p-column>
     <h4>总数：{{totalRecords}}</h4>
     <ng-template let-car pTemplate="item"  >
