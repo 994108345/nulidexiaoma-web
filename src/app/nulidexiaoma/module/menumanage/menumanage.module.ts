@@ -3,8 +3,8 @@ import {MainComponent} from './component/main.component';
 import {FormsModule} from '@angular/forms';
 
 import {
-  ButtonModule, DataListModule, DataScrollerModule, DataTableModule, GrowlModule, InputTextModule, MessagesModule,
-  SharedModule,
+  ButtonModule, DataListModule, DataTableModule, GrowlModule, InputTextModule, MessagesModule,
+  SharedModule, TreeModule, TreeTableModule, TreeNode, ScheduleModule, PickListModule
 } from 'primeng/primeng';
 import {HttpModule} from '@angular/http';
 import {MessageService} from 'primeng/components/common/messageservice';
@@ -15,6 +15,7 @@ import {CommonModule} from "@angular/common";
 import {routing} from "./menumanage.component.routing";
 import {MenuManageComponent} from "./menumanage.component";
 import {AddComponent} from "./component/add/add.component";
+import {NodeService} from "../../../base/service/nodeService/node.service";
 
 
 @NgModule({
@@ -30,6 +31,10 @@ import {AddComponent} from "./component/add/add.component";
     DataTableModule,
     SharedModule,
     DataListModule,
+    TreeTableModule,
+    TreeModule,
+    ScheduleModule,
+    PickListModule,
     routing
   ],
   declarations: [

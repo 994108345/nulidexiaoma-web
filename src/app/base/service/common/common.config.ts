@@ -2,7 +2,7 @@
 //后台服务基地址
 export const  BizRoot = "/nulidexiaoma";
 //前台项目名
-export const  BaseRoot = "/nulidexiaoma-web";
+export const  BaseRoot = "/app";
 
 /**
  *后台服务地址

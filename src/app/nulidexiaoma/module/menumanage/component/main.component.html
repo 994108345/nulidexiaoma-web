@@ -1,4 +1,6 @@
 <div>
+  <!--提示信息框-->
+  <p-growl [(value)]="msgs"></p-growl>
   <h3>菜单管理</h3>
   <div class="tools-bar">
     <button type="button" pButton (click)="routerAdd()" label="新增" class="ui-button-warning" ></button>
@@ -8,7 +10,7 @@
   >
     <p-column [style]="{'width':'100px'}" header="操作">
       <ng-template let-order="rowData" pTemplate="body">
-        <button type="button" pButton (click)="refresh()" label="延期" class="ui-button-warning"></button>
+        <button type="button" pButton (click)="refresh()" label="编辑" class="ui-button-warning"></button>
       </ng-template>
     </p-column>
     <p-column   *ngFor="let col of menuCols" [field]="col.field" [header]="col.header">
@@ -17,7 +19,6 @@
     <ng-template let-car pTemplate="item"  >
     </ng-template>
   </p-dataTable>
-
 </div>
 
 

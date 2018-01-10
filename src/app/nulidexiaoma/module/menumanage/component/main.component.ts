@@ -26,23 +26,23 @@ export class MainComponent extends AbstractComponent implements OnInit{
     //this.commonRouters = commonRouters;
     /*t跳转菜单页面*/
     this.commonRouters = new CommonRouters("menumanage");
-    this.commonRouters.mainMenuRouter = this.commonRouters.rootRouter + "/add";
+    this.commonRouters.addRouter = this.commonRouters.rootRouter + "/add";
 
    //跳转链接
     this.commonUrls = {
       queryUrl :BizRoot+ "/Menu/getMenuPageBean",
-      getOrderByIdUrl :BizRoot+ "/Menu/getOrderById",
+      getOneMenuUrl :BizRoot+ "/Menu/getMenuList",
     };
     /*列名*/
     this.menuCols = menuCols_config;
   }
-  /*跳转到添加页面*/
-  routerAdd(){
-    if (this.commonUrls.getOrderByIdUrl) {
+  /*跳转到编辑页面*/
+  routerEdit(){
+    if (this.commonUrls.getOneMenuUrl) {
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});
-      let condition = this.getQueryCondition(event,this.searchParams);
-      this.commonService.doHttpPost(this.commonUrls.getOrderByIdUrl, condition).then(rtnData => {
+      let condition = this.order;
+      this.commonService.doHttpPost(this.commonUrls.getOneMenuUrl, condition).then(rtnData => {
         this.status = JSON.parse(rtnData['status']);
         if(this.status && this.status==10000){
           this.msgs = this.wzlAlert.success("查找成功");
@@ -56,6 +56,13 @@ export class MainComponent extends AbstractComponent implements OnInit{
       })
     } else {
       this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
+    }
+  }
+
+  /*跳转到新增页面*/
+  routerAdd(){
+    if(this.commonRouters.addRouter){
+      this.router.navigate([this.commonRouters.addRouter]);
     }
   }
 }

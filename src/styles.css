@@ -1,17 +1,22 @@
-/*所有输入框的样式*/
-.input{
-  margin-top: 20px;
-}
-body{
-  border:1px solid red;
-}
+/*所有分页的工具栏*/
 .tools-bar{
+  padding-right: 5px;
   width: 98%;
   height: auto;
-  padding: 4px;
   margin: 4px;
   background-color: #186BA0;
   border-radius:5px;/*圆角*/
   text-align:right;
+}
+body{
+  border:1px solid red;
+}
+/*所有input标签*/
+button{
+  margin: 5px;
+}
+/*div的class叫input，div里面有个输入框*/
+.input{
+  margin-top: 20px;
 }
 

@@ -84,6 +84,12 @@ export class AbstractComponent {
     let jsonObj = JSON.parse(json);
     return jsonObj[0];
   }
+  //超时执行
+  /*
+  setTimeout(() => {
+   this.blockedDocument = false;
+   }, 3000);
+   */
 
 
   /** ----------从DI构造器中手动获取服务-----------*/

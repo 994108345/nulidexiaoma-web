@@ -5,6 +5,7 @@ import {AbstractComponent} from "./base/common/abstract.component";
   selector: 'app-root',
   template:`
     <router-outlet></router-outlet>
+    <p-growl [(value)]="msgs"></p-growl>
   `,
   styleUrls: ['./app.component.css'],
 })
