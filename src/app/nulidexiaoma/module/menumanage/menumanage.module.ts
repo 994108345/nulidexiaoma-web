@@ -15,7 +15,6 @@ import {CommonModule} from "@angular/common";
 import {routing} from "./menumanage.component.routing";
 import {MenuManageComponent} from "./menumanage.component";
 import {AddComponent} from "./component/add/add.component";
-import {NodeService} from "../../../base/service/nodeService/node.service";
 
 
 @NgModule({
