@@ -90,6 +90,17 @@ export class AbstractComponent {
    this.blockedDocument = false;
    }, 3000);
    */
+  /*对象转换，防止引用传递*/
+  changeObject(a:any){
+    if(!(a instanceof Object) || (a instanceof  Array)){
+      return  a;
+    }
+    let b = {};
+    for(let attr in a){
+      b[attr] = this.changeObject(a[attr]);
+    }
+    return b;
+  }
 
 
   /** ----------从DI构造器中手动获取服务-----------*/

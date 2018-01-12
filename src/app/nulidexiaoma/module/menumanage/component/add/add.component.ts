@@ -72,13 +72,19 @@ export class AddComponent extends AbstractComponent implements OnInit{
           orders.splice(i, 1,{});//删除已经插入的记录
           /*如果数组长度为0.则说明已经全部递归*/
           arr = this.groupMenu(orders, menuId, n - 1);//递归
+          /*对象转换防止引用传递*/
+          let arr_ext = this.changeObject(arr);
           if(arr.data){
+            if(!arrObj.children){
             arrObj.children = [];
-            arrObj.children.push(arr);
+            }
+            arrObj.children.push(arr_ext);
           }
           /*如果是根目录*/
           if (mId == "0") {
-            this.menuTable.push(arrObj);
+            let arrObj_ext = this.changeObject(arrObj);
+            arrObj = {};
+            this.menuTable.push(arrObj_ext);
           }
         }
       }
