@@ -34,6 +34,7 @@ export class AddComponent extends AbstractComponent implements OnInit{
     this.commonUrls = {
       queryUrl :BizRoot+ "/Menu/getMenuPageBean",
       getMenuTree:BizRoot+ "/Menu/getMenuTree",//获取树形菜单
+      addMenuUrl:BizRoot+ "/Menu/addMenu",//获取树形菜单
     };
     /*获取并递归菜单*/
     this.getMenuTree();
@@ -60,6 +61,24 @@ export class AddComponent extends AbstractComponent implements OnInit{
       })
     } else {
       this.msgs = this.wzlAlert.info("树形菜单url不存在，请联系管理员！")
+    }
+  }
+  /*添加菜单*/
+  addMenu(){
+    if (this.commonUrls.addMenuUrl) {
+      console.log("递归菜单");
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      let condition = this.order;
+      this.commonService.doHttpPost(this.commonUrls.addMenuUrl, condition).then(rtnData => {
+        this.status = JSON.parse(rtnData['status']);
+        if(this.status && this.status==10000){
+        }else{
+          this.msgs = this.wzlAlert.error("添加菜单失败，"+rtnData['message']);
+        }
+      })
+    } else {
+      this.msgs = this.wzlAlert.info("添加菜单url不存在，请联系管理员！")
     }
   }
   /*组合菜单(废弃)*/
