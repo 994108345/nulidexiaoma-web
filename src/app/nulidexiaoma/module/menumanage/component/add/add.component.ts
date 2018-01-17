@@ -17,7 +17,9 @@ export class AddComponent extends AbstractComponent implements OnInit{
   /*菜单tree的列名*/
   menuTreeCols:any[] ;
 
-  messageInfos:MessageInfo[] = [];//显示多条报错信息
+  /*添加按钮控制*/
+  isAdd:boolean = true;
+
   constructor(public injector:Injector){
     super(injector);
   }
@@ -35,6 +37,7 @@ export class AddComponent extends AbstractComponent implements OnInit{
     };
     /*获取并递归菜单*/
     this.getMenuTree();
+
 
   }
   /*新增菜单*/
@@ -94,37 +97,8 @@ export class AddComponent extends AbstractComponent implements OnInit{
     return arrObj;
   }
 
-  //校验是否有值
-  inputValidation(param:any,num?:string){
-    console.log("123");
-    if(num){
-      if(!(this.isNumber(this.order[param]))){
-        this.order[param] = "";
-        return null;
-      }
-    }
-    if(param) {
-      let value = this.order[param];
-      for(let i = 0;i<this.messageInfos.length; i++ ){
-        let me
-      }
-      if(value){
-        return null
-      }else{
-        let isExit = false;
-        for(let att of this.messageInfos){
-          if(att.summary == (menuParam[param]+"_error")){
-            isExit = true;
-          }
-        }
-        if(!isExit){
-        let message= {severity:'warn', summary:menuParam[param]+"_error", detail:"'"+menuParam[param]+"'不能为空"};
-        this.messageInfos.push(message);
-        this.msgs = this.wzlAlert.multiple(this.messageInfos);
-        }
-      }
-    }else{
-      console.log("校验"+menuParam[param]+"的值时，param为空");
-    }
+  /*输入框验证*/
+  inputValidations(param:any,num?:string){
+    this.isAdd = super.inputValidation(param,menuParam,num);
   }
 }

@@ -35,8 +35,6 @@ import {AbstractComponent} from "../../../base/common/abstract.component";
     TreeModule,
     ScheduleModule,
     PickListModule,
-    ReactiveFormsModule,
-
     routing
   ],
   declarations: [

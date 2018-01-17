@@ -6,6 +6,7 @@ import {WzlAlertService} from "../service/wzlalert/wzlalert.service";
 import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} from '@angular/http';
 import {Router} from "@angular/router";
 import {AppGuardService} from "../guard/app.gurad.service";
+import {menuParam} from "../../nulidexiaoma/module/menumanage/component/add/add.component.config";
 /**
  * Created by wenzailong on 2017/12/21.
  */
@@ -15,7 +16,7 @@ export class AbstractComponent {
   commonRouters: any;//页面路由管理
   commonUrls: any;//页面内基本操作的url
   status:any;//后台返回信息的状态
-  msgs:any;//提示框
+  msgs:any = [];//提示框
   totalRecords:number ;//总共记录数
   searchParams: any = {};//查询条件
   table: any;//查询表格
@@ -110,6 +111,48 @@ export class AbstractComponent {
     return true;
   }
 
+  //校验是否有值
+  inputValidation(param:any,menuParam:any,num?:string){
+    console.log("123");
+    if(num){
+      if(!(this.isNumber(this.order[param]))){
+        this.order[param] = "";
+        return true;
+      }
+    }
+    if(param) {
+      let value = this.order[param];
+      if(!value){
+        let isExit = false;
+        for(let att of this.msgs){
+          if(att.summary == (menuParam[param]+"_error")){
+            isExit = true;
+          }
+        }
+        if(!isExit){
+          let message= {severity:'warn', summary:menuParam[param]+"_error", detail:"'"+menuParam[param]+"'不能为空"};
+          this.msgs.push(message);
+          this.msgs = this.wzlAlert.multiple(this.msgs);
+        }
+      }else{
+        for(let i = 0; i < this.msgs.length; i++){
+          let att = this.msgs[i];
+          if(att.summary == (menuParam[param]+"_error")){
+            this.msgs.splice(i,i+1);
+            i--;
+          }
+        }
+      }
+      if(this.msgs.length ==0){
+        this.wzlAlert.clear();
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      console.log("校验"+menuParam[param]+"的值时，param为空");
+    }
+  }
 
 
   /** ----------从DI构造器中手动获取服务-----------*/
