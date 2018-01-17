@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import {MainComponent} from './component/main.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {
   ButtonModule, DataListModule, DataTableModule, GrowlModule, InputTextModule, MessagesModule,
-  SharedModule, TreeModule, TreeTableModule, TreeNode, ScheduleModule, PickListModule
+  SharedModule, TreeModule, TreeTableModule, TreeNode, ScheduleModule, PickListModule, DropdownModule
 } from 'primeng/primeng';
 import {HttpModule} from '@angular/http';
 import {MessageService} from 'primeng/components/common/messageservice';
@@ -35,6 +35,8 @@ import {AbstractComponent} from "../../../base/common/abstract.component";
     TreeModule,
     ScheduleModule,
     PickListModule,
+    ReactiveFormsModule,
+
     routing
   ],
   declarations: [

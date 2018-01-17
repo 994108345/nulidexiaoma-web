@@ -18,7 +18,7 @@ function proxy_cookie_path(oldCookie) {
 
 module.exports = {
     "/nulidexiaoma": {
-        "target": "http://localhost:8080",
+        "target": "http://localhost:8079",
         "secure": false
     }
 

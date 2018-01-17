@@ -1,65 +1,69 @@
 <div>
   <h3>新增菜单</h3>
-  <div class="ui-g ui-fluid">
+  <!--报错信息-->
+  <p-messages [(value)]="msgs"></p-messages>
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-4">
+          <div class="input">
+            <h4 class="first">菜单ID</h4>
+            <span class="ui-float-label">
+              <input pInputTextt id="float-menuId" type="text" size="30" [(ngModel)]="order.menuId"
+                     (blur)="inputValidation('menuId','1')" formControlName="menuId"/>
+            </span>
+          </div>
+        </div>
 
-    <div class="ui-g-12 ui-md-4">
-      <div class="input">
-        <h4 class="first">菜单ID</h4>
-        <span class="ui-float-label">
-          <input id="float-menuId" type="text" size="30" [(ngModel)]="order.menuId"  pInputText placeholder="菜单ID">
-        </span>
+        <div class="ui-g-12 ui-md-4">
+          <div class="input">
+            <h4 class="first">菜单名</h4>
+            <span class="ui-float-label">
+              <input id="float-menuName" type="text" size="30" [(ngModel)]="order.menuName" pInputTextt
+                     placeholder="菜单名" (blur)="inputValidation('menuName')">
+            </span>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+          <div class="input">
+            <h4 class="first">菜单路由</h4>
+            <span class="ui-float-label">
+              <input id="float-linkUrl" type="text" size="30" [(ngModel)]="order.menuUrl" pInputTextt
+                     placeholder="菜单路由" (blur)="inputValidation('menuUrl')">
+            </span>
+          </div>
+        </div>
+
+
+        <div class="ui-g-12 ui-md-4">
+        <div class="input">
+          <h4 class="first">父菜单编码</h4>
+          <span class="ui-float-label">
+              <input id="float-parentId" type="remark" size="30" [(ngModel)]="order.parentId" pInputTextt
+                     placeholder="父菜单编码" (blur)="inputValidation('parentId','1')">
+           </span>
+        </div>
       </div>
+
+        <div class="ui-g-12 ui-md-4">
+          <div class="input">
+            <h4 class="first">引用标签名</h4>
+            <span class="ui-float-label">
+              <input id="float-iconName" type="remark" size="30" [(ngModel)]="order.iconName"  pInputText placeholder="引用标签名">
+           </span>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+          <div class="input">
+            <h4 class="first">排序编码</h4>
+            <span class="ui-float-label">
+              <input id="float-sortId" type="remark" size="30" [(ngModel)]="order.sortId"  pInputText placeholder="排序编码">
+           </span>
+          </div>
+        </div>
     </div>
-
-    <div class="ui-g-12 ui-md-4">
-      <div class="input">
-        <h4 class="first">菜单名</h4>
-        <span class="ui-float-label">
-          <input id="float-menuName" type="text" size="30" [(ngModel)]="order.menuName"  pInputText placeholder="菜单名">
-        </span>
-      </div>
-    </div>
-
-    <div class="ui-g-12 ui-md-4">
-      <div class="input">
-        <h4 class="first">菜单路由</h4>
-        <span class="ui-float-label">
-          <input id="float-linkUrl" type="text" size="30" [(ngModel)]="order.linkUrl"  pInputText placeholder="菜单路由">
-        </span>
-      </div>
-    </div>
-
-
-    <div class="ui-g-12 ui-md-4">
-    <div class="input">
-      <h4 class="first">父菜单编码</h4>
-      <span class="ui-float-label">
-          <input id="float-parentId" type="remark" size="30" [(ngModel)]="order.parentId"  pInputText placeholder="父菜单编码">
-       </span>
-    </div>
-  </div>
-
-    <div class="ui-g-12 ui-md-4">
-      <div class="input">
-        <h4 class="first">引用标签名</h4>
-        <span class="ui-float-label">
-          <input id="float-iconName" type="remark" size="30" [(ngModel)]="order.iconName"  pInputText placeholder="引用标签名">
-       </span>
-      </div>
-    </div>
-
-    <div class="ui-g-12 ui-md-4">
-      <div class="input">
-        <h4 class="first">排序编码</h4>
-        <span class="ui-float-label">
-          <input id="float-sortId" type="remark" size="30" [(ngModel)]="order.sortId"  pInputText placeholder="排序编码">
-       </span>
-      </div>
-    </div>
-
-  </div>
   <div>
-    <button type="button" pButton (click)="addNewMenu()" label="确定添加" class="ui-button-success" ></button>
+    <button type="button" pButton (click)="addNewMenu()" label="确定添加" class="ui-button-success" [disabled]="false"></button>
   </div>
 
   <div>

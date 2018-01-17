@@ -102,6 +102,15 @@ export class AbstractComponent {
     return b;
   }
 
+  /*是否为大于0的数字*/
+  isNumber(data:any){
+    if(!(data >=0 || data <=0)  ){
+      return false;
+    }
+    return true;
+  }
+
+
 
   /** ----------从DI构造器中手动获取服务-----------*/
   get commonService(): CommonService {

@@ -101,4 +101,13 @@ export class ArrObj{
 
 export const children:ArrObj[] =[];
 
+/*校验值空使用*/
+export const menuParam={
+  menuId:"菜单Id",
+  menuName:"菜单名",
+  menuUrl:"菜单路由",
+  parentId:"父菜单编码",
+
+}
+
 
