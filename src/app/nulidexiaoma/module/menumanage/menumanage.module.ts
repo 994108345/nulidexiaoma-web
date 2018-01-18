@@ -4,7 +4,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {
   ButtonModule, DataListModule, DataTableModule, GrowlModule, InputTextModule, MessagesModule,
-  SharedModule, TreeModule, TreeTableModule, TreeNode, ScheduleModule, PickListModule, DropdownModule
+  SharedModule, TreeModule, TreeTableModule, TreeNode, ScheduleModule, PickListModule, DropdownModule,
+  ConfirmDialogModule, ConfirmationService
 } from 'primeng/primeng';
 import {HttpModule} from '@angular/http';
 import {MessageService} from 'primeng/components/common/messageservice';
@@ -16,6 +17,8 @@ import {routing} from "./menumanage.component.routing";
 import {MenuManageComponent} from "./menumanage.component";
 import {AddComponent} from "./component/add/add.component";
 import {AbstractComponent} from "../../../base/common/abstract.component";
+import {EditComponent} from "./component/edit/edit.component";
+import {WzlCacheService} from "../../../base/service/wzlcache/wzlceche.service";
 
 
 @NgModule({
@@ -35,13 +38,15 @@ import {AbstractComponent} from "../../../base/common/abstract.component";
     TreeModule,
     ScheduleModule,
     PickListModule,
+    ConfirmDialogModule,
     routing
   ],
   declarations: [
     MainComponent,
     AddComponent,
     MenuManageComponent,
+    EditComponent
   ],
-  providers: [CommonService, WzlAlertService, MessageService],
+  providers: [CommonService, WzlAlertService, MessageService,ConfirmationService,WzlCacheService],
 })
 export class MenuManageModule { }

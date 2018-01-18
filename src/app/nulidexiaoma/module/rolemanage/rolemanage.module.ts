@@ -3,7 +3,8 @@ import {MainComponent} from './component/main.component';
 import {FormsModule} from '@angular/forms';
 
 import {
-  ButtonModule, DataListModule, DataScrollerModule, DataTableModule, GrowlModule, InputTextModule, MessagesModule,
+  ButtonModule, ConfirmDialogModule, DataListModule, DataScrollerModule, DataTableModule, GrowlModule, InputTextModule,
+  MessagesModule,
   SharedModule,
 } from 'primeng/primeng';
 import {HttpModule} from '@angular/http';
@@ -14,6 +15,8 @@ import {WzlAlertService} from "../../../base/service/wzlalert/wzlalert.service";
 import {routing} from "./rolemanage.component.routing";
 import {RoleManageComponent} from "./rolemanage.component";
 import {CommonModule} from "@angular/common";
+import {AddComponent} from "./component/add/add.component";
+import {EditComponent} from "./component/edit/edit.component";
 
 
 @NgModule({
@@ -29,11 +32,14 @@ import {CommonModule} from "@angular/common";
     DataTableModule,
     SharedModule,
     DataListModule,
+    ConfirmDialogModule,//确认提示框
     routing
   ],
   declarations: [
     MainComponent,
     RoleManageComponent,
+    AddComponent,
+    EditComponent,
   ],
   providers: [CommonService, WzlAlertService, MessageService],
 })

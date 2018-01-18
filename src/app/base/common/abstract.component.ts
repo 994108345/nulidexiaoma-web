@@ -1,16 +1,17 @@
 import {BaseComponent} from "./base.component";
-import {Injector} from "@angular/core";
-import {DataTable, LazyLoadEvent, Message} from "primeng/primeng";
+import {Injector, OnDestroy} from "@angular/core";
+import {ConfirmationService, DataTable, LazyLoadEvent, Message} from "primeng/primeng";
 import {CommonService} from "../service/common/common.service";
 import {WzlAlertService} from "../service/wzlalert/wzlalert.service";
 import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} from '@angular/http';
 import {Router} from "@angular/router";
 import {AppGuardService} from "../guard/app.gurad.service";
 import {menuParam} from "../../nulidexiaoma/module/menumanage/component/add/add.component.config";
+import {WzlCacheService} from "../service/wzlcache/wzlceche.service";
 /**
  * Created by wenzailong on 2017/12/21.
  */
-export class AbstractComponent {
+export class AbstractComponent implements OnDestroy{
   order:any = {};//一个记录
   orders:any[] = [];//一个记录列表
   commonRouters: any;//页面路由管理
@@ -20,8 +21,13 @@ export class AbstractComponent {
   totalRecords:number ;//总共记录数
   searchParams: any = {};//查询条件
   table: any;//查询表格
+  selectOrder:any;//选择的表单
 
   constructor(public injector: Injector) {
+  }
+  /*当页面销毁时*/
+  ngOnDestroy() {
+    /*localStorage.clear();*/
   }
   /*懒加载方法*/
   loadData(event: LazyLoadEvent) {
@@ -170,5 +176,14 @@ export class AbstractComponent {
   /*路由守卫服务*/
   get appGuard(): AppGuardService {
     return this.injector.get(AppGuardService);
+  }
+  /*确认框提示服务*/
+  get confirmationService(): ConfirmationService {
+    return this.injector.get(ConfirmationService);
+  }
+
+  /*缓存服务*/
+  get wzlCache(): WzlCacheService {
+    return this.injector.get(WzlCacheService);
   }
 }

@@ -5,5 +5,5 @@ export const menuCols_config = [
   {field: 'linkUrl', header: '菜单路由',width: '150px'},
   {field: 'parentId', header: '父菜单Id',width: '150px'},
   {field: 'iconName', header: '引用图片名',width: '150px'},
-  {field: 'sortId', header: '排序号',width: '150px'},
+  {field: 'sortid', header: '排序号',width: '150px'},
 ];

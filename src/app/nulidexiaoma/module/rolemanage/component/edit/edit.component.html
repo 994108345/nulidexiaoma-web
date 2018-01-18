@@ -63,14 +63,7 @@
         </div>
     </div>
   <div>
-    <button type="button" pButton (click)="addMenu()" label="确定添加" class="ui-button-success" [disabled]="isAdd"></button>
-  </div>
-
-  <div>
-    <p-treeTable [value]="menuTable">
-      <p-header>Basic</p-header>
-      <p-column   *ngFor="let col of menuTreeCols" [field]="col.field" [header]="col.header"></p-column>
-    </p-treeTable>
+    <button type="button" pButton (click)="addMenu()" label="更新保存" class="ui-button-success" [disabled]="isUpdate"></button>
   </div>
 </div>
 
