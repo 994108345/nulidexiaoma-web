@@ -16,7 +16,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
   menuDate:any[];
 
   @ViewChild('table') table: any;
-  constructor(public injector:Injector,private confirmationService: ConfirmationService){
+  constructor(public injector:Injector){
     super(injector);
   }
   ngOnInit(): void {

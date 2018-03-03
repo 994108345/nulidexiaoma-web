@@ -1,0 +1,12 @@
+<div>
+<h3>最近登录用户</h3>
+  <h3>Dynamic Columns</h3>
+  <p-dataTable [value]="redisData">
+    <p-column *ngFor="let col of redisCols" [field]="col.field" [header]="col.header">
+    </p-column>
+  </p-dataTable>
+</div>
+
+
+
+

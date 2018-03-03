@@ -2,6 +2,8 @@ import {Component, Injector, OnInit} from '@angular/core';
 import {AbstractComponent} from "../../../base/common/abstract.component";
 import {BizRoot, CommonRouters} from "../../../base/service/common/common.config";
 import {MenuItem} from "primeng/primeng";
+import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} from '@angular/http';
+
 
 @Component({
   selector:'app-menu',
@@ -22,6 +24,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
    //跳转链接
     this.commonUrls = {
       loginUrl :BizRoot+ "/Login/login",
+      writeUserLoginUrl :BizRoot+ "/UserRange/addUserToList",
     };
 
     this.menuItems = [
@@ -58,10 +61,15 @@ export class MainComponent extends AbstractComponent implements OnInit{
         ]
       },
       {
-        label: 'Edit',
+        label: '学习Demo',
         icon: 'fa-edit',
         items: [
-          {label: 'Undo', icon: 'fa-mail-forward'},
+          {label: 'Redis',
+            icon: 'fa-mail-forward',
+            items: [
+              {label: '最近登录的用户', icon: 'fa-mail-forward',routerLink:'redisstudy'},
+            ]
+          },
           {label: 'Redo', icon: 'fa-mail-reply'}
         ]
       },
@@ -112,11 +120,36 @@ export class MainComponent extends AbstractComponent implements OnInit{
         ]
       }
     ];
+
+    //记录登录信息
+    this.wroteUserLoginToRedis();
   }
   redictRouter(router:any){
     let routerStr = 'app/'+router;
     if (router) {
       this.router.navigate([routerStr]);
+    } else {
+      this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
+    }
+  }
+
+  //记录登录信息
+  wroteUserLoginToRedis(){
+    if (this.commonUrls.writeUserLoginUrl) {
+      /*从缓存取值*/
+      let str = localStorage.getItem('user');
+      let user = this.tOJsonObj(str);
+
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({headers: headers});
+      let condition = user;
+      this.commonService.doHttpPost(this.commonUrls.writeUserLoginUrl, condition).then(rtnData => {
+        this.status = JSON.parse(rtnData['status']);
+        if(this.status && this.status==10000){
+        }else{
+          this.msgs = this.wzlAlert.error("请求信息失败，"+rtnData['message']);
+        }
+      })
     } else {
       this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
     }
