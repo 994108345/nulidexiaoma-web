@@ -70,6 +70,12 @@ export class MainComponent extends AbstractComponent implements OnInit{
               {label: '最近登录的用户', icon: 'fa-mail-forward',routerLink:'redisstudy'},
             ]
           },
+          {label: '多线程',
+            icon: 'fa-mail-forward',
+            items: [
+              {label: '线程的速度', icon: 'fa-edit',routerLink:'multithread'},
+            ]
+          },
           {label: 'Redo', icon: 'fa-mail-reply'}
         ]
       },

@@ -15,6 +15,7 @@ const mainMenuRouters: Routes = [
       { path:'rolemanage', loadChildren: 'app/nulidexiaoma/module/rolemanage/rolemanage.module#RoleManageModule' },
       { path:'menumanage', loadChildren: 'app/nulidexiaoma/module/menumanage/menumanage.module#MenuManageModule' },
       { path:'redisstudy', loadChildren: 'app/nulidexiaoma/module/redisstudy/redisstudy.module#RedisStudyModule' },
+      { path:'multithread', loadChildren: 'app/nulidexiaoma/module/multithread/multithread.module#MultiThreadModule' },
     ]
   },
 ];

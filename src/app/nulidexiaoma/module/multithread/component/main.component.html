@@ -1,0 +1,15 @@
+<h3>查看使用线程与不适用线程的效率差异</h3>
+<!--提示信息框-->
+<p-growl [(value)]="msgs"></p-growl>
+<h3>普通操作</h3>
+<span class="ui-float-label">
+   <button type="button" pButton (click)="normalMethod()" label="查询" class="ui-button-success" ></button>
+  <h1 *ngIf="normalTime">花费时间：{{normalTime}}</h1>
+</span>
+
+<h3>多线程操作</h3>
+<span class="ui-float-label">
+    <input id="float-input2" type="text" size="30" pInputText  [value]="threadNum"><h1 *ngIf="normalTime" >花费时间：{{threadTime}}</h1>
+    <label for="float-input2">线程个数</label>
+   <button type="button" pButton (click)="threadMethod()" label="查询" class="ui-button-success" ></button>
+</span>
