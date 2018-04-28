@@ -1,8 +1,6 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {AbstractComponent} from "../../../../base/common/abstract.component";
-import {BizRoot, CommonRouters} from "../../../../base/service/common/common.config";
-import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} from '@angular/http';
-import {escape} from "querystring";
+import {$} from "protractor";
 
 @Component({
   templateUrl: './main.component.html',
@@ -14,6 +12,10 @@ export class MainComponent extends AbstractComponent implements OnInit{
     super(injector);
   }
   ngOnInit(): void {
+  }
+
+  jqueryIsExi(){
+    $("p1").text="wwwwwwwwwwwwwwwwww";
   }
 
 }
