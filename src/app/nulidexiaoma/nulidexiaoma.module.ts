@@ -4,6 +4,9 @@ import {IndexModule} from "./module/index/index.module";
 import {RoleManageModule} from "./module/rolemanage/rolemanage.module";
 import {RedisStudyModule} from "./module/redisstudy/redisstudy.module";
 import {MultiThreadModule} from "./module/multithread/multithread.module";
+import {HtmlModule} from "./module/html/html.module";
+import {JavascriptModule} from "./module/javascript/javascript.module";
+import {JqueryModule} from "./module/jquery/jquery.module";
 
 
 @NgModule({
@@ -15,6 +18,9 @@ import {MultiThreadModule} from "./module/multithread/multithread.module";
     RedisStudyModule,
     MultiThreadModule,
     IndexModule,
+    HtmlModule,
+    JqueryModule,
+    JavascriptModule
   ],
   providers: [],
   bootstrap: []

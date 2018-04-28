@@ -1,0 +1,32 @@
+<h3>给页面插入一个html</h3>
+<button (click)="button1()">按钮1</button>
+<br/>
+
+<h3>修改内容</h3>
+<p id="p1">来呀，修改我的内容</p>
+<button (click)="button2()">按钮2</button>
+
+<h3>切换图片</h3>
+<img id="changeImg" (click)="imgChange()" src="../../../../../assets/picture/bobo2.jpg" style="width: 200px;height: 200px;" >
+
+<h3>输入验证：如果不是数字会提示</h3>
+<input type="text" [(ngModel)]="inputValue"><button (click)="checkInputVal()">提交</button>
+
+<h3>修改css</h3>
+<p id="colorP">二呆：我不想变绿T0T</p>
+<p>二傻：求我就不让你变绿</p>
+<button (click)="colorNoChange()">求你了</button><button (click)="colorChange()">哥有骨气，不求你</button>
+
+<h3>window对象</h3>
+<p>查看浏览器的长宽啊！！</p>
+<button (click)="sortWindowHigWid()" >我给你算算</button>
+结果：<input [(ngModel)]="windowHigAndWid">
+
+
+<h3>Screen对象</h3>
+<p>查看屏幕的长宽！！</p>
+<button (click)="sortScreenHigWid()" >我给你算算</button>
+结果：<input [(ngModel)]="screenHigAndWid" maxlength="auto">
+
+<h3>查看cookie</h3>
+<button (click)="createCookie()">查看cookie</button><button (click)="clearCookie()">清空cookie</button>

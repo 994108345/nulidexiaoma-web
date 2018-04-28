@@ -16,6 +16,9 @@ const mainMenuRouters: Routes = [
       { path:'menumanage', loadChildren: 'app/nulidexiaoma/module/menumanage/menumanage.module#MenuManageModule' },
       { path:'redisstudy', loadChildren: 'app/nulidexiaoma/module/redisstudy/redisstudy.module#RedisStudyModule' },
       { path:'multithread', loadChildren: 'app/nulidexiaoma/module/multithread/multithread.module#MultiThreadModule' },
+      { path:'html', loadChildren: 'app/nulidexiaoma/module/html/html.module#HtmlModule' },
+      { path:'javascript', loadChildren: 'app/nulidexiaoma/module/javascript/javascript.module#JavascriptModule' },
+      { path:'jquery', loadChildren: 'app/nulidexiaoma/module/jquery/jquery.module#JqueryModule' },
     ]
   },
 ];

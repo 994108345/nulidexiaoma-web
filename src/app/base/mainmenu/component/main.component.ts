@@ -65,18 +65,22 @@ export class MainComponent extends AbstractComponent implements OnInit{
         icon: 'fa-edit',
         items: [
           {label: 'Redis',
-            icon: 'fa-mail-forward',
             items: [
-              {label: '最近登录的用户', icon: 'fa-mail-forward',routerLink:'redisstudy'},
+              {label: '最近登录的用户',routerLink:'redisstudy'},
             ]
           },
           {label: '多线程',
-            icon: 'fa-mail-forward',
             items: [
-              {label: '线程的速度', icon: 'fa-edit',routerLink:'multithread'},
+              {label: '线程的速度',routerLink:'multithread'},
             ]
           },
-          {label: 'Redo', icon: 'fa-mail-reply'}
+          {label: 'web',
+            items: [
+              {label: 'html',routerLink:'html'},
+              {label: 'javascript',routerLink:'javascript'},
+              {label: 'jquery',routerLink:'jquery'},
+            ]
+          },
         ]
       },
       {

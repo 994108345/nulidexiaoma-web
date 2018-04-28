@@ -1,13 +1,18 @@
 /*默认主页的样式*/
 .index{
   margin-left: 23%;
-  height: 70%;
   width: 77%;
-  height:600px;
+  height: 90%;
+  position:absolute;
+  overflow:scroll;
 }
 .left{
   height: 70%;width: auto;float: left;
 }
+.after{
+  height: 70%;
+}
+
 /*主页面的文字样式*/
 .top-div-font{
   font-size: 1em;
@@ -17,7 +22,7 @@
 .top{
   background: url(../../../../assets/picture/2.png) no-repeat;
   background-size: 100%;
-  height: 50px;
+  height:10%;
 }
 /*所有div的样式*/
 div{
