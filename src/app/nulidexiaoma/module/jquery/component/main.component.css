@@ -1,6 +1,4 @@
-
-p em {
-  color:red;
+#p4{
+  border:1px solid red;
+  position:relative;
 }
-
-h1:before {content: url(../../../../../assets/picture/1.jpg)}
