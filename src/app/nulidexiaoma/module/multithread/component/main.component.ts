@@ -17,6 +17,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
     super(injector);
   }
   ngOnInit(): void {
+    console.log("多线程断点");
     /*t跳转菜单页面*/
     this.commonRouters = new CommonRouters("mainMenu");
     this.commonRouters.mainMenuRouter = this.commonRouters.rootRouter;

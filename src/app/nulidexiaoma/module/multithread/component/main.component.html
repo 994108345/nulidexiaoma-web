@@ -9,7 +9,7 @@
 
 <h3>多线程操作</h3>
 <span class="ui-float-label">
-    <input id="float-input2" type="text" size="30" pInputText  [value]="threadNum"><h1 *ngIf="normalTime" >花费时间：{{threadTime}}</h1>
+    <input id="float-input2" type="text" size="30" pInputText  [value]="threadNum"><h1 *ngIf="threadTime" >花费时间：{{threadTime}}</h1>
     <label for="float-input2">线程个数</label>
    <button type="button" pButton (click)="threadMethod()" label="查询" class="ui-button-success" ></button>
 </span>
