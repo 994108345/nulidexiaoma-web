@@ -35,6 +35,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
         this.status = JSON.parse(rtnData['status']);
         if(this.status && this.status==10000){
           this.redisData =  rtnData.data;
+          this.msgs = this.wzlAlert.success("请求信息成功，"+rtnData['message']);
         }else{
           this.msgs = this.wzlAlert.error("请求信息失败，"+rtnData['message']);
         }

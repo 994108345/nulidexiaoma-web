@@ -53,3 +53,13 @@
 <h1>This is a heading</h1>
 <p>The :before pseudo-element inserts content before an element.</p>
 <h1>This is a heading</h1>-->
+<!--提示信息框-->
+<div>
+  <p-growl [(value)]="msgs"></p-growl>
+  <h3>推送mq</h3>
+  <span class="ui-float-label">
+      <input id="float-input2" type="text" size="30" pInputText  [(ngModel)]="this.mqStr">
+      <label for="float-input2">推送mq内容</label>
+     <button type="button" pButton (click)="sendMq()" label="推送" class="ui-button-success" ></button>
+  </span>
+</div>
