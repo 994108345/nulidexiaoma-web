@@ -9,11 +9,11 @@ import {
 import {HttpModule} from '@angular/http';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {Router, RouterModule} from '@angular/router';
-import {routing} from './jquery.component.routing';
 import {CommonService} from "../../../base/service/common/common.service";
 import {WzlAlertService} from "../../../base/service/wzlalert/wzlalert.service";
 import {CommonModule} from "@angular/common";
 import {WzlCacheService} from "../../../base/service/wzlcache/wzlceche.service";
+import {routing} from "../javascript/javascript.component.routing";
 import {JqueryComponent} from "./jquery.component";
 
 

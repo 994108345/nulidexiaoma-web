@@ -12,6 +12,7 @@ import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} 
 })
 export class MainComponent extends AbstractComponent implements OnInit{
   menuItems: MenuItem[];
+  clickTimes:number;
 
   constructor(public injector:Injector){
     super(injector);
@@ -25,6 +26,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
     this.commonUrls = {
       loginUrl :BizRoot+ "/Login/login",
       writeUserLoginUrl :BizRoot+ "/UserRange/addUserToList",
+      getClickTimes:BizRoot+ "/ClickTimes/getClickTimes",
     };
 
     this.menuItems = [
@@ -133,6 +135,9 @@ export class MainComponent extends AbstractComponent implements OnInit{
 
     //记录登录信息
     this.wroteUserLoginToRedis();
+
+    //获取点击次数
+    this.getClicKTimes();
   }
   redictRouter(router:any){
     let routerStr = 'app/'+router;
@@ -163,5 +168,18 @@ export class MainComponent extends AbstractComponent implements OnInit{
     } else {
       this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
     }
+  }
+
+  //记录登录次数
+  getClicKTimes(){
+    let condition = null;
+    this.commonService.doHttpPost(this.commonUrls.getClickTimes, condition).then(rtnData => {
+      this.status = JSON.parse(rtnData['status']);
+      if(this.status && this.status==10000){
+        this.clickTimes = rtnData['data'];
+      }else{
+        this.msgs = this.wzlAlert.error("请求信息失败，"+rtnData['message']);
+      }
+    })
   }
 }
