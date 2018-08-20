@@ -3,28 +3,26 @@ import {AbstractComponent} from "../../../../base/common/abstract.component";
 import {BizRoot, CommonRouters} from "../../../../base/service/common/common.config";
 import {menuCols_config} from "./main.component.config";
 import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} from '@angular/http';
-import {ConfirmationService} from "primeng/primeng";
+import {ConfirmationService, TreeNode} from "primeng/primeng";
 
 @Component({
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent extends AbstractComponent implements OnInit{
-  /*列名*/
-  menuCols:any[] ;
-  /*表数据*/
-  menuDate:any[];
+  /*菜单tree*/
+  menuTable: TreeNode[] = [];
+  user:any;
 
   @ViewChild('table') table: any;
   constructor(public injector:Injector){
     super(injector);
   }
   ngOnInit(): void {
+    console.log("菜单管理主页面");
     /*从缓存取值*/
     let str = localStorage.getItem('user');
-    this.order = this.tOJsonObj(str);
-    //页面路由
-    //this.commonRouters = commonRouters;
+    this.user = this.toJsonObjs(str);
     /*t跳转菜单页面*/
     this.commonRouters = new CommonRouters("menumanage");
     this.commonRouters.addRouter = this.commonRouters.rootRouter + "/add";
@@ -35,57 +33,69 @@ export class MainComponent extends AbstractComponent implements OnInit{
       queryUrl :BizRoot+ "/Menu/getMenuPageBean",
       getOneMenuUrl :BizRoot+ "/Menu/getMenuList",
       deleteMenuUrl :BizRoot+ "/Menu/deleteMenu",
+      getMenuTree:BizRoot+ "/Menu/getMenuTree",//获取树形菜单
     };
-    /*列名*/
-    this.menuCols = menuCols_config;
+    this.getMenuTree();
   }
-  /*跳转到编辑页面*/
-  routerEdit(){
-    if (this.commonUrls.getOneMenuUrl) {
-      let headers = new Headers({'Content-Type': 'application/json'});
-      let options = new RequestOptions({headers: headers});
-      let condition = this.selectOrder;
-      this.commonService.doHttpPost(this.commonUrls.getOneMenuUrl, condition).then(rtnData => {
+  /*获取菜单树形目录*/
+  getMenuTree(){
+      let condition = [];
+      this.commonService.doHttpPost(this.commonUrls.getMenuTree, condition).then(rtnData => {
         this.status = JSON.parse(rtnData['status']);
         if(this.status && this.status==10000){
-          this.msgs = this.wzlAlert.success("查找成功");
-          this.wzlCache.setCache("data",rtnData['data'][0]);
-          this.router.navigate([this.commonRouters.editRouter]);
+          /*数据*/
+          this.menuTable = rtnData['data'];
         }else{
-          this.msgs = this.wzlAlert.error("查找失败，"+rtnData['message']);
+          this.msgs = this.wzlAlert.error("查找树形菜单失败，"+rtnData['message']);
         }
       })
-    } else {
-      this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
+
+  }
+
+  /*跳转到编辑页面*/
+  routerEdit(){
+    if(this.order.menuId) {
+      let condition = this.order;
+      this.commonService.doHttpPost(this.commonUrls.getOneMenuUrl, condition).then(rtnData => {
+        this.status = JSON.parse(rtnData['status']);
+        if (this.status && this.status == 10000) {
+          this.msgs = this.wzlAlert.success("查找成功");
+          this.wzlCache.setCache("data", rtnData['data'][0]);
+          this.router.navigate([this.commonRouters.editRouter]);
+        } else {
+          this.msgs = this.wzlAlert.error("查找失败，" + rtnData['message']);
+        }
+      })
     }
   }
 
   /*跳转到新增页面*/
   routerAdd(){
-    if(this.commonRouters.addRouter){
-      this.router.navigate([this.commonRouters.addRouter]);
-    }
+      if(this.order.menuId){
+        this.wzlCache.setCache("menu",this.order);
+        this.router.navigate([this.commonRouters.addRouter]);
+      }else{
+        this.msgs = this.wzlAlert.warn("请选择父菜单");
+      }
   }
 
   //删除提要记录
   deleteOneMenu(){
-    if (this.commonUrls.deleteMenuUrl) {
-      let headers = new Headers({'Content-Type': 'application/json'});
-      let options = new RequestOptions({headers: headers});
-      let condition = this.selectOrder;
-      console.log(11111);
+    if(this.order.menuId){
+      let condition = this.order;
       this.commonService.doHttpPost(this.commonUrls.deleteMenuUrl, condition).then(rtnData => {
         this.status = JSON.parse(rtnData['status']);
         if(this.status && this.status==10000){
           this.msgs = this.wzlAlert.success("删除菜单成功");
-          this.refresh();
+          this.refreshView();
         }else{
           this.msgs = this.wzlAlert.error("删除菜单失败，"+rtnData['message']);
         }
       })
-    } else {
-      this.msgs = this.wzlAlert.info("请求url不存在，请联系管理员！")
+    }else{
+      this.msgs = this.wzlAlert.error("请选择要删除的菜单");
     }
+
   }
 
   /*确定删除吗*/
@@ -100,6 +110,31 @@ export class MainComponent extends AbstractComponent implements OnInit{
 
   /*记录被选择时调用的方法*/
   onRowSelect(event:any){
-    this.selectOrder = event.data;
+    let node = event.node;
+    /*获取菜单信息*/
+    this.getOneMenuByMenuId(node.data);
   }
+
+  getOneMenuByMenuId(menuId:string){
+    let condition = {menuId:menuId};
+    this.commonService.doHttpPost(this.commonUrls.getOneMenuUrl, condition).then(rtnData => {
+      this.status = JSON.parse(rtnData['status']);
+      if(this.status && this.status==10000){
+        this.msgs = this.wzlAlert.success("查找成功");
+        this.order = rtnData['data'][0];
+      }else{
+        this.msgs = this.wzlAlert.error("查找失败，"+rtnData['message']);
+      }
+    })
+  }
+
+  onRowUnSelect(){
+    this.order = "";
+  }
+
+
+  refreshView(){
+    this.getMenuTree();
+  }
+
 }

@@ -22,6 +22,7 @@ export class AbstractComponent implements OnDestroy{
   searchParams: any = {};//查询条件
   table: any;//查询表格
   selectOrder:any;//选择的表单
+  msgsDialog:any;//弹出窗的报错信息
 
   constructor(public injector: Injector) {
   }
@@ -79,7 +80,7 @@ export class AbstractComponent implements OnDestroy{
   /*将json字符串转成json对象
   * 注意！转化成是一个json对象数组
   * */
-  tOJsonObjs(json:any){
+  toJsonObject(json:any){
     let jsonObj = JSON.parse(json);
     return jsonObj;
   }
@@ -87,7 +88,7 @@ export class AbstractComponent implements OnDestroy{
   /*将json字符串转成json对象
    * 注意！转化成是一个json对象数组,这里取第一个
    * */
-  tOJsonObj(json:any){
+  toJsonObjs(json:any){
     let jsonObj = JSON.parse(json);
     return jsonObj[0];
   }
@@ -119,7 +120,6 @@ export class AbstractComponent implements OnDestroy{
 
   //校验是否有值
   inputValidation(param:any,menuParam:any,num?:string){
-    console.log("123");
     if(num){
       if(!(this.isNumber(this.order[param]))){
         this.order[param] = "";
@@ -158,6 +158,19 @@ export class AbstractComponent implements OnDestroy{
     }else{
       console.log("校验"+menuParam[param]+"的值时，param为空");
     }
+  }
+
+  /**
+   * 文本框验证
+   * @param value 输入框的值
+   * @param valueName 值的中文名
+   * @param type 值的类型，默认不传是string，date：时间，number：数字
+   */
+  inputVerify(value:any,valueName:string,type?:string){
+    if(type){
+      type = "string";
+    }
+
   }
 
 

@@ -88,7 +88,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
     let cookie = document.cookie;
 
     if(cookie.length > 0){
-      let user = this.tOJsonObjs(cookie);
+      let user = this.toJsonObject(cookie);
       alert("用户姓名：" + user.name);
     }else{
       let user = this.wzlCache.getCache("user");

@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   ButtonModule, DataListModule, DataTableModule, GrowlModule, InputTextModule, MessagesModule,
   SharedModule, TreeModule, TreeTableModule, TreeNode, ScheduleModule, PickListModule, DropdownModule,
-  ConfirmDialogModule, ConfirmationService
+  ConfirmDialogModule, ConfirmationService, FieldsetModule
 } from 'primeng/primeng';
 import {HttpModule} from '@angular/http';
 import {MessageService} from 'primeng/components/common/messageservice';
@@ -39,6 +39,7 @@ import {WzlCacheService} from "../../../base/service/wzlcache/wzlceche.service";
     ScheduleModule,
     PickListModule,
     ConfirmDialogModule,
+    FieldsetModule,
     routing
   ],
   declarations: [

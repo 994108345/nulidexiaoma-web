@@ -9,16 +9,78 @@
     <button type="button" pButton (click)="routerEdit()" label="编辑" class="ui-button-warning"></button>
     <button type="button" pButton (click)="sureDelete()" label="删除" class="ui-button-danger"></button>
   </div>
-  <p-dataTable #table [value]="orders" [paginator]="true" [rows]="10"  [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [pageLinks]="9"
-               selectionMode="single" [(selection)]="selectOrder" (onRowDblclick)="refresh()" dataKey="id"
-  >
-    <p-column [style]="{'width':'40px','text-align': 'center'}" selectionMode="single"></p-column>
-    <p-column   *ngFor="let col of menuCols" [field]="col.field" [header]="col.header">
-    </p-column>
-    <h4>总数：{{totalRecords}}</h4>
-    <ng-template let-car pTemplate="item"  >
-    </ng-template>
-  </p-dataTable>
+  <div>
+    <p-tree [value]="menuTable" selectionMode="checkbox" [(selection)]="selectOrder"
+            (onNodeSelect)="onRowSelect($event)" (onNodeUnselect)="onRowUnSelect($event)">
+    </p-tree>
+  </div>
+  <div>
+    <p-fieldset legend="菜单明细" [toggleable]="true">
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-4 ui-md-4 ui-lg-2">
+          <div class="input">
+            <h4 class="first">菜单ID</h4>
+            <span class="ui-float-label">
+              <input pInputText id="float-menuId" type="text" size="30" [(ngModel)]="order.menuId"
+                     placeholder="菜单ID" readonly="true">
+            </span>
+          </div>
+        </div>
+
+        <div class="ui-g-2 ui-md-2 ui-lg-2">
+          <div class="input">
+            <h4 class="first">菜单名</h4>
+            <span class="ui-float-label">
+              <input id="float-menuName" type="text" size="30" [(ngModel)]="order.menuName" pInputText placeholder="菜单名" readonly="true">
+            </span>
+          </div>
+        </div>
+
+        <div class="ui-g-2 ui-md-2 ui-lg-2">
+          <div class="input">
+            <h4 class="first">菜单路由</h4>
+            <span class="ui-float-label">
+              <input id="float-linkUrl" type="text" size="30" [(ngModel)]="order.linkUrl" pInputText
+                     placeholder="菜单路由" readonly="true">
+            </span>
+          </div>
+        </div>
+
+
+        <div class="ui-g-2  ui-md-2 ui-lg-2">
+          <div class="input">
+            <h4 class="first">父菜单编码</h4>
+            <span class="ui-float-label">
+              <input id="float-parentId" type="remark" size="30" [(ngModel)]="order.parentId" pInputText
+                     placeholder="父菜单编码" readonly="true">
+           </span>
+          </div>
+        </div>
+
+        <div class="ui-g-2 ui-md-2" ui-lg-2>
+          <div class="input">
+            <h4 class="first">引用标签名</h4>
+            <span class="ui-float-label">
+              <input id="float-iconName" type="remark" size="30" [(ngModel)]="order.iconName"  pInputText placeholder="引用标签名" readonly="true">
+           </span>
+          </div>
+        </div>
+
+        <div class="ui-g-2 ui-md-2" ui-lg-2>
+          <div class="input">
+            <h4 class="first">排序编码</h4>
+            <span class="ui-float-label">
+              <input id="float-sortId" type="remark" size="30" [(ngModel)]="order.sortid"  pInputText placeholder="排序编码" readonly="true">
+           </span>
+          </div>
+        </div>
+      </div>
+    </p-fieldset>
+  </div>
+
+
+
+
 </div>
 
 

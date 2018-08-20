@@ -4,9 +4,10 @@ import {FormsModule} from '@angular/forms';
 
 import {
   ButtonModule, ConfirmationService, ConfirmDialogModule, DataListModule, DataScrollerModule, DataTableModule,
+  FieldsetModule,
   GrowlModule, InputTextModule,
-  MessagesModule,
-  SharedModule, TreeTableModule,
+  MessagesModule, PickListModule, ScheduleModule,
+  SharedModule, TreeModule, TreeTableModule,
 } from 'primeng/primeng';
 import {HttpModule} from '@angular/http';
 import {MessageService} from 'primeng/components/common/messageservice';
@@ -34,6 +35,14 @@ import {EditComponent} from "./component/edit/edit.component";
     SharedModule,
     DataListModule,
     TreeTableModule,
+    FieldsetModule,
+    DataTableModule,
+    SharedModule,
+    DataListModule,
+    TreeTableModule,
+    TreeModule,
+    ScheduleModule,
+    PickListModule,
     ConfirmDialogModule,//确认提示框
     routing
   ],

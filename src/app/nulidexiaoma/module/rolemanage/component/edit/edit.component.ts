@@ -28,8 +28,6 @@ export class EditComponent extends AbstractComponent implements OnInit{
   /*添加菜单*/
   addMenu(){
     if (this.commonUrls.updateMenuUrl) {
-      let headers = new Headers({'Content-Type': 'application/json'});
-      let options = new RequestOptions({headers: headers});
       let condition = this.order;
       this.commonService.doHttpPost(this.commonUrls.updateMenuUrl, condition).then(rtnData => {
         this.status = JSON.parse(rtnData['status']);

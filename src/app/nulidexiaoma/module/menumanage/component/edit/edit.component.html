@@ -1,5 +1,5 @@
 <div>
-  <h3>新增菜单</h3>
+  <h3>编辑菜单</h3>
   <!--报错信息-->
   <p-messages [(value)]="msgs"></p-messages>
     <div class="ui-g ui-fluid">
@@ -7,7 +7,7 @@
           <div class="input">
             <h4 class="first">菜单ID</h4>
             <span class="ui-float-label">
-              <input pInputText id="float-menuId" type="text" size="30" [(ngModel)]="order.menuId" (blur)="inputValidations('menuId','1')"
+              <input pInputText id="float-menuId" type="text" size="30" [(ngModel)]="order.menuId" (blur)="inputValidations('menuId','1')" readonly
                      placeholder="菜单ID">
             </span>
           </div>
@@ -38,7 +38,7 @@
         <div class="input">
           <h4 class="first">父菜单编码</h4>
           <span class="ui-float-label">
-              <input id="float-parentId" type="remark" size="30" [(ngModel)]="order.parentId" pInputText
+              <input id="float-parentId" type="remark" size="30" [(ngModel)]="order.parentId" pInputText readonly
                      placeholder="父菜单编码" (blur)="inputValidations('parentId','1')">
            </span>
         </div>

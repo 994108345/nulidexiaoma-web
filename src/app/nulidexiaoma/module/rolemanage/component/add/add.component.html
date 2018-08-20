@@ -1,69 +1,37 @@
 <div>
-  <h3>新增菜单</h3>
+  <h3>新增角色</h3>
   <!--报错信息-->
   <p-messages [(value)]="msgs"></p-messages>
+  <p-growl [(value)]="msgsDialog"></p-growl>
+
     <div class="ui-g ui-fluid">
         <div class="ui-g-12 ui-md-4">
           <div class="input">
-            <h4 class="first">菜单ID</h4>
+            <h4 class="first">角色名</h4>
             <span class="ui-float-label">
-              <input pInputText id="float-menuId" type="text" size="30" [(ngModel)]="order.menuId" (blur)="inputValidations('menuId','1')"
-                     placeholder="菜单ID">
+              <input pInputText id="float-menuId" type="text" size="30" [(ngModel)]="order.roleName" (blur)="inputValidations('roleName')"
+                     placeholder="角色名">
             </span>
           </div>
         </div>
 
         <div class="ui-g-12 ui-md-4">
           <div class="input">
-            <h4 class="first">菜单名</h4>
+            <h4 class="first">备注</h4>
             <span class="ui-float-label">
-              <input id="float-menuName" type="text" size="30" [(ngModel)]="order.menuName" pInputText placeholder="菜单名"
-                     (blur)="inputValidations('menuName')">
+              <input id="float-menuName" type="text" size="30" [(ngModel)]="order.menuName" pInputText placeholder="备注"
+                     >
             </span>
-          </div>
-        </div>
-
-        <div class="ui-g-12 ui-md-4">
-          <div class="input">
-            <h4 class="first">菜单路由</h4>
-            <span class="ui-float-label">
-              <input id="float-linkUrl" type="text" size="30" [(ngModel)]="order.linkUrl" pInputText
-                     placeholder="菜单路由" (blur)="inputValidations('linkUrl')">
-            </span>
-          </div>
-        </div>
-
-
-        <div class="ui-g-12 ui-md-4">
-        <div class="input">
-          <h4 class="first">父菜单编码</h4>
-          <span class="ui-float-label">
-              <input id="float-parentId" type="remark" size="30" [(ngModel)]="order.parentId" pInputText
-                     placeholder="父菜单编码" (blur)="inputValidations('parentId','1')">
-           </span>
-        </div>
-      </div>
-
-        <div class="ui-g-12 ui-md-4">
-          <div class="input">
-            <h4 class="first">引用标签名</h4>
-            <span class="ui-float-label">
-              <input id="float-iconName" type="remark" size="30" [(ngModel)]="order.iconName"  pInputText placeholder="引用标签名">
-           </span>
-          </div>
-        </div>
-
-        <div class="ui-g-12 ui-md-4">
-          <div class="input">
-            <h4 class="first">排序编码</h4>
-            <span class="ui-float-label">
-              <input id="float-sortId" type="remark" size="30" [(ngModel)]="order.sortid"  pInputText placeholder="排序编码">
-           </span>
           </div>
         </div>
     </div>
+  <p-fieldset legend="菜单权限" [toggleable]="true">
+    <p-tree [value]="menuTable" selectionMode="checkbox" [(selection)]="selectOrder"
+            (onNodeSelect)="menuSelect($event)" (onNodeUnselect)="menuSelect($event)">
+    </p-tree>
+  </p-fieldset>
   <div>
-    <button type="button" pButton (click)="addMenu()" label="确定添加" class="ui-button-success" [disabled]="isAdd"></button>
+    <button type="button" pButton (click)="addRole()" label="确定添加" class="ui-button-success" [disabled]="isAddBtn"></button>
   </div>
 </div>
 

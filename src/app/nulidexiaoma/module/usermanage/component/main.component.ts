@@ -14,7 +14,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
   ngOnInit(): void {
     /*从缓存取值*/
     let str = localStorage.getItem('user');
-    this.order = this.tOJsonObj(str);
+    this.order = this.toJsonObjs(str);
     //页面路由
     //this.commonRouters = commonRouters;
     /*t跳转菜单页面*/

@@ -13,11 +13,16 @@ import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} 
 export class MainComponent extends AbstractComponent implements OnInit{
   menuItems: MenuItem[];
   clickTimes:number;
+  user:any={};
 
   constructor(public injector:Injector){
     super(injector);
   }
   ngOnInit(): void {
+    console.log("菜单主页");
+    /*获取用户*/
+    let userStr = localStorage.getItem("user");
+    this.user = this.toJsonObjs(userStr);
     //页面路由
     this.commonRouters = new CommonRouters("subjectmanage");
     this.commonRouters.editRouter = this.commonRouters.rootRouter + "/add";
@@ -27,44 +32,26 @@ export class MainComponent extends AbstractComponent implements OnInit{
       loginUrl :BizRoot+ "/Login/login",
       writeUserLoginUrl :BizRoot+ "/UserRange/addUserToList",
       getClickTimes:BizRoot+ "/ClickTimes/getClickTimes",
+      getMengList:BizRoot+ "/Menu/getMenuListByUserName",
     };
 
     this.menuItems = [
       {
         label: '用户管理',
-        icon: 'fa-file-o',
-        items: [{
-          label: 'New',
-          icon: 'fa-plus',
-          items: [
-            {label: 'Project'},
-            {label: 'Other'},
-          ]
-        },
+        items: [
           {label: '用户信息',routerLink:'usermanage'},
-          {label: 'Quit'}
         ]
       },
       {
         label: '权限管理',
-        icon: 'fa-edit',
         items: [
-          {label: '权限分配', icon: 'fa-mail-forward'},
-          {label: '角色管理', icon: 'fa-mail-forward',routerLink:'rolemanage'},
-          {label: '菜单管理', icon: 'fa-mail-reply',routerLink:'menumanage'}
-        ]
-      },
-      {
-        label: '编辑器',
-        icon: 'fa-edit',
-        items: [
-          {label: '添加学习资料', icon: 'fa-mail-forward'},
-          {label: 'Redo', icon: 'fa-mail-reply'}
+          {label: '权限分配'},
+          {label: '角色管理',routerLink:'rolemanage'},
+          {label: '菜单管理',routerLink:'menumanage'}
         ]
       },
       {
         label: '学习Demo',
-        icon: 'fa-edit',
         items: [
           {label: 'Redis',
             items: [
@@ -85,52 +72,6 @@ export class MainComponent extends AbstractComponent implements OnInit{
           },
         ]
       },
-      {
-        label: 'Help',
-        icon: 'fa-question',
-        items: [
-          {
-            label: 'Contents'
-          },
-          {
-            label: 'Search',
-            icon: 'fa-search',
-            items: [
-              {
-                label: 'Text',
-                items: [
-                  {
-                    label: 'Workspace'
-                  }
-                ]
-              },
-              {
-                label: 'File'
-              }
-            ]}
-        ]
-      },
-      {
-        label: 'Actions',
-        icon: 'fa-gear',
-        items: [
-          {
-            label: 'Edit',
-            icon: 'fa-refresh',
-            items: [
-              {label: 'Save', icon: 'fa-save'},
-              {label: 'Update', icon: 'fa-save'},
-            ]
-          },
-          {
-            label: 'Other',
-            icon: 'fa-phone',
-            items: [
-              {label: 'Delete', icon: 'fa-minus'}
-            ]
-          }
-        ]
-      }
     ];
 
     //记录登录信息
@@ -138,6 +79,9 @@ export class MainComponent extends AbstractComponent implements OnInit{
 
     //获取点击次数
     this.getClicKTimes();
+
+    /*获取菜单*/
+    this.getMenuList();
   }
   redictRouter(router:any){
     let routerStr = 'app/'+router;
@@ -153,7 +97,7 @@ export class MainComponent extends AbstractComponent implements OnInit{
     if (this.commonUrls.writeUserLoginUrl) {
       /*从缓存取值*/
       let str = localStorage.getItem('user');
-      let user = this.tOJsonObj(str);
+      let user = this.toJsonObject(str);
 
       let headers = new Headers({'Content-Type': 'application/json'});
       let options = new RequestOptions({headers: headers});
@@ -177,6 +121,19 @@ export class MainComponent extends AbstractComponent implements OnInit{
       this.status = JSON.parse(rtnData['status']);
       if(this.status && this.status==10000){
         this.clickTimes = rtnData['data'];
+      }else{
+        this.msgs = this.wzlAlert.error("请求信息失败，"+rtnData['message']);
+      }
+    })
+  }
+  //获取菜单列
+  getMenuList(){
+    let condition = {userName:this.user['userName']};
+    this.commonService.doHttpPost(this.commonUrls.getMengList, condition).then(rtnData => {
+      this.status = JSON.parse(rtnData['status']);
+      if(this.status && this.status==10000){
+        let menuItem = rtnData['data'];
+        /*this.menuItems = menuItem;*/
       }else{
         this.msgs = this.wzlAlert.error("请求信息失败，"+rtnData['message']);
       }
