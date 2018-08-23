@@ -27,28 +27,33 @@ export class MainComponent extends AbstractComponent implements OnInit{
 
     this.commonRouters.mainMenuRouter = this.commonRouters.rootRouter;
 
+
+
    //跳转链接
     this.commonUrls = {
       queryUrl :BizRoot+ "/Role/getRolePageBean",
       deleteRoleUrl:BizRoot+"/Role/deleteRole",
+      getOneRoleUrl:BizRoot+"/Role/getOneRole",
     };
     /*列名*/
     this.roleCols = roleCols_config;
   }
   /*跳转到编辑页面*/
   routerEdit() {
-    if (this.selectOrder && this.selectOrder.length > 0) {
+    if (this.selectOrder.roleId) {
       let condition = this.selectOrder;
-      this.commonService.doHttpPost(this.commonUrls.getOneMenuUrl, condition).then(rtnData => {
+      this.commonService.doHttpPost(this.commonUrls.getOneRoleUrl, condition).then(rtnData => {
         this.status = JSON.parse(rtnData['status']);
         if (this.status && this.status == 10000) {
           this.msgs = this.wzlAlert.success("查找成功");
-          this.wzlCache.setCache("data", rtnData['data'][0]);
+          this.wzlCache.setCache("data", rtnData['data']);
           this.router.navigate([this.commonRouters.editRouter]);
         } else {
           this.msgs = this.wzlAlert.error("查找失败，" + rtnData['message']);
         }
       })
+    }else{
+      this.msgs = this.wzlAlert.warn("请选择一条记录");
     }
   }
 

@@ -2,7 +2,7 @@ import {Component, Injector, OnInit, ViewChild} from '@angular/core';
 import {AbstractComponent} from "../../../../../base/common/abstract.component";
 import {BizRoot, CommonRouters} from "../../../../../base/service/common/common.config";
 import {TreeNode} from "primeng/primeng";
-import {roleParam} from "./add.component.config";
+import {menuTableDemoExt, roleParam} from "./add.component.config";
 import {Response, URLSearchParams, RequestOptionsArgs, Headers, RequestOptions} from '@angular/http';
 import {MessageInfo} from "../../../../../base/service/wzlalert/wzlalert.config";
 import {menuTreeCols_ext} from "../../../menumanage/component/add/add.component.config";
@@ -15,6 +15,7 @@ import {menuTreeCols_ext} from "../../../menumanage/component/add/add.component.
 export class AddComponent extends AbstractComponent implements OnInit{
   /*菜单tree*/
   menuTable: TreeNode[] = [];
+  menuTableDemo:TreeNode[] = [];//测试用的
   /*菜单tree的列名*/
   menuTreeCols:any[] ;
 
@@ -41,11 +42,15 @@ export class AddComponent extends AbstractComponent implements OnInit{
     };
     /*获取并递归菜单*/
     this.getMenuTree();
+
+    this.menuTableDemo = menuTableDemoExt;
+  this.requireInstance();
   }
 
   /*添加菜单*/
   addRole(){
-      let condition = {"role":this.order,"menu":this.selectOrder};
+      let param = this.toJsonByRequest(this.selectOrder);
+      let condition = {role:this.order,menu:param};
       this.commonService.doHttpPost(this.commonUrls.addRoleUrl, condition).then(rtnData => {
         this.status = JSON.parse(rtnData['status']);
         if(this.status && this.status==10000){

@@ -30,6 +30,12 @@
             (onNodeSelect)="menuSelect($event)" (onNodeUnselect)="menuSelect($event)">
     </p-tree>
   </p-fieldset>
+
+  <p-fieldset legend="菜单权限测试" [toggleable]="true">
+    <p-tree [value]="menuTableDemo" selectionMode="checkbox" [(selection)]="selectOrder"
+            (onNodeSelect)="menuSelect($event)" (onNodeUnselect)="menuSelect($event)">
+    </p-tree>
+  </p-fieldset>
   <div>
     <button type="button" pButton (click)="addRole()" label="确定添加" class="ui-button-success" [disabled]="isAddBtn"></button>
   </div>

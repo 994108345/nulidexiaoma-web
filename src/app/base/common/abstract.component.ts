@@ -199,4 +199,27 @@ export class AbstractComponent implements OnDestroy{
   get wzlCache(): WzlCacheService {
     return this.injector.get(WzlCacheService);
   }
+
+  /*初始化require*/
+  requireInstance(){
+    var System: any;
+    System.import('/assets/js/regular-expresions.js').then(file => {
+      file.test();
+    });
+  }
+
+  /*将循环依赖的json对象数组，转换成json字符串*/
+  toJsonByRequest(arr:any[]){
+    let resultArr = new Array;
+    let CircularJSON = require('circular-json');
+    for(let obj of arr){
+      obj.parent = null;
+      obj.children = null;
+      let param = CircularJSON.stringify(obj);
+      resultArr.push(param);
+    }
+    return resultArr;
+  }
+
+
 }
