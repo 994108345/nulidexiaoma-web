@@ -1,0 +1,27 @@
+<!--提示信息框-->
+<p-growl [(value)]="msgs"></p-growl>
+<div class="ui-g ui-fluid">
+  <div class="ui-g-12 ui-md-4">
+    <div class="input">
+      <h4 class="first">用户名</h4>
+      <span class="ui-float-label">
+              <input pInputText id="float-menuId" type="text" size="30" [(ngModel)]="order.userName" placeholder="用户名">
+      </span>
+    </div>
+  </div>
+
+  <div class="ui-g-12 ui-md-4">
+    <div class="input">
+      <h4 class="first">密码</h4>
+      <span class="ui-float-label">
+              <input id="float-menuName" type="text" size="30" [(ngModel)]="order.passWord" pInputText placeholder="密码">
+            </span>
+    </div>
+  </div>
+</div>
+
+<button type="button" pButton (click)="login()" label="登录" class="ui-button-success" ></button>
+
+
+
+<button type="button" pButton (click)="logOut()" label="注销" class="ui-button-success" ></button>

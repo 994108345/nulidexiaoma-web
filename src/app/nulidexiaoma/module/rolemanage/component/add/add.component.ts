@@ -44,13 +44,12 @@ export class AddComponent extends AbstractComponent implements OnInit{
     this.getMenuTree();
 
     this.menuTableDemo = menuTableDemoExt;
-  this.requireInstance();
+  /*this.requireInstance();*/
   }
 
   /*添加菜单*/
   addRole(){
-      let param = this.toJsonByRequest(this.selectOrder);
-      let condition = {role:this.order,menu:param};
+      let condition = {role:this.order,menu:this.selectOrder};
       this.commonService.doHttpPost(this.commonUrls.addRoleUrl, condition).then(rtnData => {
         this.status = JSON.parse(rtnData['status']);
         if(this.status && this.status==10000){

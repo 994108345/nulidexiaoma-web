@@ -70,6 +70,11 @@ export class MainComponent extends AbstractComponent implements OnInit{
               {label: 'jquery',routerLink:'jquery'},
             ]
           },
+          {label: '单点登录',
+            items: [
+              {label: '单点登录',routerLink:'logintoken'},
+            ]
+          },
         ]
       },
     ];

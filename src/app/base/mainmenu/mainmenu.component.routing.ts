@@ -19,6 +19,7 @@ const mainMenuRouters: Routes = [
       { path:'html', loadChildren: 'app/nulidexiaoma/module/html/html.module#HtmlModule' },
       { path:'javascript', loadChildren: 'app/nulidexiaoma/module/javascript/javascript.module#JavascriptModule' },
       { path:'jquery', loadChildren: 'app/nulidexiaoma/module/jquery/jquery.module#JqueryModule' },
+      { path:'logintoken', loadChildren: 'app/nulidexiaoma/module/logintoken/logintoken.module#LoginTokenModule' },
     ]
   },
 ];

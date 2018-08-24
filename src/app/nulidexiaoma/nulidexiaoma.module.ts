@@ -7,6 +7,7 @@ import {MultiThreadModule} from "./module/multithread/multithread.module";
 import {HtmlModule} from "./module/html/html.module";
 import {JavascriptModule} from "./module/javascript/javascript.module";
 import {JqueryModule} from "./module/jquery/jquery.module";
+import {LoginTokenModule} from "./module/logintoken/logintoken.module";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {JqueryModule} from "./module/jquery/jquery.module";
     IndexModule,
     HtmlModule,
     JqueryModule,
-    JavascriptModule
+    JavascriptModule,
+    LoginTokenModule,
   ],
   providers: [],
   bootstrap: []
